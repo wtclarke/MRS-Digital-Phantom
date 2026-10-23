@@ -68,7 +68,7 @@ def save_nifti_mrs(save_dir, total_selection, individual_selection, components_d
         data = spec2fid(data, axis=-1)
         if data.ndim == 1:
             data = data[np.newaxis, np.newaxis, np.newaxis, :, np.newaxis]  # Add dimensions for 4D
-            data = np.conjugate(data)  # Conjugate to match NIfTI-MRS convention
+            data = np.conjugate(data)  # Store FID using the NIfTI-MRS phase convention
         return np.array(data, dtype=np.complex64)
 
     def _create_metadata():
@@ -91,7 +91,7 @@ def save_nifti_mrs(save_dir, total_selection, individual_selection, components_d
         """Save a NIfTI-MRS image with header and extension metadata."""
         img = nib.nifti1.Nifti1Image(data, affine=affine)
         pixdim = img.header['pixdim']
-        pixdim[1:4] = affine.diagonal()[:3]
+        pixdim[1:4] = np.linalg.norm(affine[:3, :3], axis=0)
         pixdim[4] = dwelltime
         img.header['pixdim'] = pixdim
         img.header.set_qform(None, code=0)

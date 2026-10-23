@@ -14,7 +14,7 @@ class DigitalPhantom:
     a metabolite basis set, and defined simulation parameters.
     """
 
-    def __init__(self, skeleton, path2metabs, path2basis, simulation_params, gui=None, metabs=[]):
+    def __init__(self, skeleton, path2metabs, path2basis, simulation_params, gui=None, metabs=[], verbose=True):
         """
         Initialize the Digital Phantom with skeleton, basis set, and simulation settings.
 
@@ -29,6 +29,7 @@ class DigitalPhantom:
         self.skeleton = skeleton
         self.path2basis = path2basis
         self.gui = gui
+        self.verbose = verbose
 
         self._log("📥 Initializing Digital Phantom...")
 
@@ -57,7 +58,7 @@ class DigitalPhantom:
         """Helper function to log messages to the GUI or stdout."""
         if self.gui:
             self.gui.log_message(msg)
-        else:
+        elif self.verbose:
             print(f"[INFO] {msg}")
 
     def _create_basis_and_signal_model(self):
@@ -77,7 +78,8 @@ class DigitalPhantom:
             self.basis_set,
             labels=self.label_names,
             simulation_params=self.simulation_params,
-            gui=self.gui
+            gui=self.gui,
+            verbose=self.verbose
         )
 
     def get_image_data(self):
@@ -136,7 +138,9 @@ class DigitalPhantom:
             tuple: Simulated spectrum, component spectra, time points, and ppm scale.
         """
         x0, x1, y0, y1, z0, z1 = voi_coords
-        voi_labels = self.get_label_data(one_hot=True)[x0:x1, y0:y1, z0:z1]
+        if not hasattr(self, '_one_hot_labels'):
+            self._one_hot_labels = self.get_label_data(one_hot=True)
+        voi_labels = self._one_hot_labels[x0:x1, y0:y1, z0:z1]
         voi_lipid_mask = self.lipid_mask[x0:x1, y0:y1, z0:z1]
 
         # If B0 map is available, pass it to the signal model
@@ -144,8 +148,6 @@ class DigitalPhantom:
             voi_B0_map = self.get_B0_data()[x0:x1, y0:y1, z0:z1]
 
         spec, components = self.signal_model.simulate_mrs_data(voi_labels, voi_lipid_mask, B0_map=voi_B0_map if 'B0' in self.subject else None)
-        print("\n=== Sampled concentrations per tissue ===")  # NEW: debug print to display per-tissue sampled concentrations for the current voxel simulation
-        print(self.signal_model.sampled_concs_per_tissue) # NEW: accesses SignalModel storage dict and prints sampled concentrations drawn for each tissue
         return spec, components, self.basis_set.t, self.basis_set.ppm, voi_labels
     
 

@@ -29,7 +29,7 @@ from utils.visualization import plot_shim_map_process, plot_spectra, plot_b0_map
 # Signal Model #
 #*************#
 class SignalModel:
-    def __init__(self, metab_df, basis, labels=['Background', 'WM', 'GM', 'CSF'], simulation_params=None, gui=None):
+    def __init__(self, metab_df, basis, labels=['Background', 'WM', 'GM', 'CSF'], simulation_params=None, gui=None, verbose=True):
         """Initialize the signal model with basis set and simulation parameters."""
         self.metab_df = metab_df
         self.basis = basis
@@ -37,13 +37,14 @@ class SignalModel:
         self.B0 = basis.B0
         self.TE = basis.TE
         self.gui = gui
+        self.verbose = verbose
         self.simulation_params = simulation_params
 
     def log(self, message: str, color: str = 'black'):
         """Helper function to log messages to GUI or print fallback."""
         if self.gui:
             self.gui.log_message(message, color)
-        else:
+        elif self.verbose:
             print(message)
 
     def simulate_mrs_data(self, voi_labels, voi_lipid_mask, B0_map=None, domain='ppm'):
