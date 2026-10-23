@@ -32,7 +32,6 @@ class MatlabRunner:
         self.octave.eval("more off")
         self.octave.eval("echo off")
         self.octave.eval("warning('off', 'all')")
-
         # Add paths to the Octave session
         self.octave.addpath(self.octave.genpath('./simulation/FID-A'))
         self.octave.addpath(self.octave.genpath('./simulation/basissets/MRSCloud-main'))
@@ -67,6 +66,7 @@ class MatlabRunner:
             # Set save_dir
             json_data["DIRECTORY"]["save_dir"] = os.path.join(os.getcwd(), 'simulation', 'basissets', 'MRSCloud-main', 'basis_save')
             save_path = json_data["DIRECTORY"]["save_dir"]
+            os.makedirs(save_path, exist_ok=True)
 
             # Save the updated JSON data back to the file
             with open(json_file_path, 'w') as file:
@@ -88,13 +88,13 @@ class MatlabRunner:
                 os.makedirs(destination_dir)
 
             # Check if the file exists before moving
-            if os.path.exists(source_path):
-                shutil.move(source_path, destination_path)
-            else:
-                print(f"Error: The file {source_path} does not exist.")
+            if not os.path.exists(source_path):
+                raise FileNotFoundError(f"Octave did not generate the expected basis set: {source_path}")
+            shutil.move(source_path, destination_path)
+            return destination_path
 
         except Exception as e:
-            print(f"Error: {e}")
+            raise RuntimeError(f"Basis set generation failed: {e}") from e
         finally:
             # Always exit Octave
             self.stop_octave()

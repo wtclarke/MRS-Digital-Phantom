@@ -263,8 +263,13 @@ class Controller:
         if on_finished is not None:
             # Make a wrapper to first call your callback, then stop progress bar
             def finished_wrapper(result):
-                on_finished(result)
-                self.gui.update_progress_bar(100)  # Stop progress bar
+                try:
+                    if isinstance(result, Exception):
+                        self.gui.log_message(f"❌ {result}", color="red")
+                    else:
+                        on_finished(result)
+                finally:
+                    self.gui.update_progress_bar(100)  # Stop progress bar
             self.worker.finished.connect(finished_wrapper)
         else:
             # If no callback, just stop the progress bar

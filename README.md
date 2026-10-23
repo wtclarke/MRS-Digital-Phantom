@@ -79,6 +79,7 @@ Ensure the following dependencies are installed:
 
   ```bash
   octave --version
+  ```
 
 Continue the installation by doing the following steps:
 

@@ -18,5 +18,5 @@ if __name__ == '__main__':
     preprocess_metab_df()
 
     # Start the main application
-    # main()
+    main()
     

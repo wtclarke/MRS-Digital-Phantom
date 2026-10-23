@@ -15,6 +15,9 @@ data/skeletons/BigBrainMR/*
 
 **/derivatives/**/*.mat
 
+simulation/basissets/MRSCloud-main/basis_save/
+simulation/lipids/lipids_cache
+
 # pixi environments
 .pixi
 *.egg-info
