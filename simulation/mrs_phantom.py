@@ -30,6 +30,9 @@ class DigitalPhantom:
         self.path2basis = path2basis
         self.gui = gui
         self.verbose = verbose
+        self.simulation_mode = simulation_params.get('simulation_mode', 'legacy')
+        if self.simulation_mode not in ('legacy', 'sequence_matched_quantitative'):
+            raise ValueError(f'Unknown simulation_mode: {self.simulation_mode}')
 
         self._log("📥 Initializing Digital Phantom...")
 
@@ -38,6 +41,17 @@ class DigitalPhantom:
         self.subject, self.label_names = load_skeleton_as_subject(path2skeleton, self.skeleton)
         self.spacing = self.subject.spacing
         self.affine = self.subject['labels'].affine
+
+        if self.simulation_mode == 'sequence_matched_quantitative':
+            from copy import deepcopy
+            from simulation.quantitative import validate_config
+            if {'tissue_fractions', 'spatial'} & set(simulation_params['quantitative']):
+                raise ValueError('DigitalPhantom quantitative mode uses anatomical ROIs; use headless fractions/cells separately')
+            validate_config(simulation_params['quantitative'])
+            self.quantitative_config = deepcopy(simulation_params['quantitative'])
+            self.simulation_params = deepcopy(simulation_params)
+            self.metabs = list(self.quantitative_config['metabolite_concentrations_mM']['WM'])
+            return
 
         # Store simulation parameters and add voxel spacing info
         self.simulation_params = simulation_params
@@ -135,8 +149,12 @@ class DigitalPhantom:
             voi_coords (tuple): Coordinates defining the VOI: (x_start, x_end, y_start, y_end, z_start, z_end).
 
         Returns:
-            tuple: Simulated spectrum, component spectra, time points, and ppm scale.
+            tuple: Legacy spectrum, components, time, ppm and labels. Explicit
+                sequence_matched_quantitative mode returns a paired-FID dictionary.
         """
+        if getattr(self, 'simulation_mode', 'legacy') == 'sequence_matched_quantitative':
+            from simulation.quantitative import simulate_quantitative
+            return simulate_quantitative(self.quantitative_config, phantom=self, voi_bounds=voi_coords)
         x0, x1, y0, y1, z0, z1 = voi_coords
         if not hasattr(self, '_one_hot_labels'):
             self._one_hot_labels = self.get_label_data(one_hot=True)
@@ -196,6 +214,8 @@ class DigitalPhantom:
         Args:
             simulation_params (dict): Updated simulation parameters.
         """
+        if getattr(self, 'simulation_mode', 'legacy') == 'sequence_matched_quantitative':
+            raise ValueError('Create a new quantitative configuration; legacy GUI updates do not apply to this mode')
         old_value = getattr(self, 'simulation_params', {}).get('lipid_sigma')
         new_value = simulation_params.get('lipid_sigma')
         needs_update = old_value != new_value or not hasattr(self, 'simulation_params')

@@ -1,0 +1,49 @@
+{
+  "simulation_mode": "sequence_matched_quantitative",
+  "positions": [
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "quantitative": {
+    "metabolite_concentrations_mM": {
+      "WM": {
+        "NAA": 10.0,
+        "Cr": 8.0,
+        "GPC": 2.0,
+        "PCh": 1.0,
+        "Glu": 8.0
+      },
+      "GM": {
+        "NAA": 14.0,
+        "Cr": 9.0,
+        "GPC": 1.5,
+        "PCh": 1.2,
+        "Glu": 12.0
+      },
+      "CSF": {
+        "NAA": 0.0,
+        "Cr": 0.0,
+        "GPC": 0.0,
+        "PCh": 0.0,
+        "Glu": 0.0
+      }
+    },
+    "water_concentrations_mol_l": {
+      "WM": 39.0165,
+      "GM": 47.2305,
+      "CSF": 55.5
+    },
+    "receiver_factor": 1.0,
+    "bandwidth_hz": 2000,
+    "points": 2048,
+    "tissue_fractions": {
+      "WM": 0.2,
+      "GM": 0.3,
+      "CSF": 0.5
+    }
+  },
+  "output_dir": "outputs/quantitative_examples/mixed_tissue"
+}

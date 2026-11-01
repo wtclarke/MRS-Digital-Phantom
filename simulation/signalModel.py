@@ -20,7 +20,6 @@ import math
 # Internal modules
 from simulation.macromolecules.simulate_mm import simulate_MMs
 from simulation.water.water_sim import generate_sum_fid
-from simulation.run_matlab import MatlabRunner
 from utils.auxillary import calc_scale_factor, spec2fid, fid2spec
 from utils.definitions import H2O_CONCENTRATIONS
 from utils.visualization import plot_shim_map_process, plot_spectra, plot_b0_map_process
@@ -243,7 +242,7 @@ class SignalModel:
         return mm_specs
 
     def simulate_lipids(self, voi_labels, voi_lipid_mask):
-
+        from simulation.run_matlab import MatlabRunner
         matlab_runner = MatlabRunner()
         lipid_fid = matlab_runner.generate_lipid_basis(basis=self.basis, linewidth=5.0)
         lipid_components = lipid_fid.shape[0]

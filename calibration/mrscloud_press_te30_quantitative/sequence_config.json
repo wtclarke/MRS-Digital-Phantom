@@ -1,0 +1,37 @@
+{
+  "TE1_ms": 14,
+  "TE2_ms": 16,
+  "TE_ms": 30,
+  "dwell_time_s": 0.0005,
+  "excitation": "ideal sim_excite x; bundled two-direction refocusing localization",
+  "excitation_flip_angle_deg": 90,
+  "frequency_origin_ppm": 4.68,
+  "metabolite_RF_carrier_ppm": 3.0,
+  "metabolite_processing": "first DC; second DC; shared scalar; frame shift; LCModel serialization; FSL formatting",
+  "native_bandwidth_hz": 4000,
+  "native_points": 8192,
+  "physical_calibration": false,
+  "readout_linewidth_hz": 1,
+  "refocusing_FOV_cm": [
+    4.5,
+    4.5
+  ],
+  "refocusing_duration_ms": 7,
+  "refocusing_flip_angle_deg": 180,
+  "refocusing_thickness_cm": [
+    3.0,
+    3.0
+  ],
+  "refocusing_waveform": "univ_eddenrefo.pta",
+  "resolution_family": "production",
+  "sequence": "Universal_Philips_UnEdited_PRESS",
+  "spatial_points_per_axis": 101,
+  "spatial_signal_scale": 0.0002205666111165572,
+  "spectrometer_frequency_mhz": 127.731,
+  "target_bandwidth_hz": 2000,
+  "target_points": 2048,
+  "unit_response_concentration_convention": "nominal mol/L per total tissue volume",
+  "water_RF_carrier_ppm": 4.7,
+  "water_processing": "raw_pre_DC_shared_scale_frame_shift_exact_samples",
+  "water_proton_multiplier_applied": false
+}

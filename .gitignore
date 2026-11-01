@@ -6,6 +6,9 @@ build/
 
 # Ignore output
 out/
+/outputs/
+.pytest_cache/
+/research/**/outputs/
 phantom_* 
 
 # Ignore some data files (because of their size)

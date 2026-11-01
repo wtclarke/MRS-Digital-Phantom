@@ -47,6 +47,8 @@ def simulate_batch(
     total_components=None,
     individual_components=(),
     seed=None,
+    *,
+    phantom=None,
 ):
     """Simulate MRiLab spectra at voxel-center indices, reusing one phantom.
 
@@ -54,12 +56,26 @@ def simulate_batch(
     ``basis_set_settings`` (vendor, localization, and TE), and ``voxel_size_mm``.
     Saving is enabled by providing ``save_dir``. The result is one dictionary per
     requested position, including the in-memory spectra and concentration ground truth.
+    Opt-in sequence_matched_quantitative settings instead return paired FIDs;
+    see simulation.quantitative for explicit tissue, relaxation, B0 and noise units.
     """
+    mode = settings.get("simulation_mode", "legacy")
+    if mode == "sequence_matched_quantitative":
+        if total_components is not None or individual_components or seed is not None:
+            raise ValueError("Quantitative mode uses paired acquisitions and explicit noise configuration, not legacy component/seed options.")
+        from simulation.quantitative import simulate_quantitative_batch
+        return simulate_quantitative_batch(positions, settings, phantom=phantom, save_dir=save_dir)
+    if mode != "legacy":
+        raise ValueError(f"Unknown simulation_mode: {mode}")
+    if phantom is not None:
+        raise ValueError("Supplying a phantom is supported only by the quantitative mode.")
     basis_path = os.fspath(settings["path2basis"])
     if not os.path.isfile(basis_path):
         raise FileNotFoundError(f"Basis set not found: {basis_path}")
 
     simulation_settings = dict(settings["simulation_params"])
+    if simulation_settings.get("simulation_mode", "legacy") != "legacy":
+        raise ValueError("Set quantitative simulation_mode at the top level of headless settings; legacy simulation_params cannot change it.")
     basis_settings = dict(settings["basis_set_settings"])
     voxel_size_mm = tuple(float(value) for value in settings["voxel_size_mm"])
     if len(voxel_size_mm) != 3 or any(not math.isfinite(value) or value <= 0 for value in voxel_size_mm):
@@ -233,6 +249,9 @@ def results_to_nifti_mrs(
     if not results:
         return []
 
+    if any(result.get("simulation_config", {}).get("simulation_mode") == "sequence_matched_quantitative" for result in results):
+        raise ValueError("Use simulation.quantitative.export_quantitative for paired quantitative FIDs.")
+
     component_names = list(results[0]["components"])
     total = component_names if total_components is None else list(total_components)
     individual = list(individual_components)
@@ -303,3 +322,23 @@ def results_to_nifti_mrs(
             "saved_paths": saved_paths,
         })
     return converted
+
+
+def run_headless(config, *, phantom=None):
+    """Run a JSON-compatible legacy or quantitative batch configuration."""
+    return simulate_batch(config.get("positions", [(0, 0, 0)]), config,
+                          save_dir=config.get("output_dir"), seed=config.get("seed"), phantom=phantom)
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Headless legacy or paired quantitative MRS simulation")
+    parser.add_argument("--config", required=True, help="JSON configuration; legacy remains the default")
+    parser.add_argument("--output-dir", help="Override the output directory in the JSON configuration")
+    args = parser.parse_args()
+    with open(args.config) as stream:
+        config = json.load(stream)
+    if args.output_dir is not None:
+        config["output_dir"] = args.output_dir
+    results = run_headless(config)
+    print(f"Generated {len(results)} voxel(s)")

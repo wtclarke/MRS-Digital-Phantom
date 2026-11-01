@@ -1,0 +1,9 @@
+{
+  "metabolite_basis.BASIS": "21461662797fafdd6aa8c13f6eb1d3084da1db5707a46a253d15fdc4b38e298b",
+  "normalization.json": "fb38a3bd95602084b9659fa1703d4a6cd85a4b76040308f78eaf1f399604f83f",
+  "normalization_reference.npz": "f2caad36b0dabb60e848853c69747a6538b2215e527a840e3b955b2b3605ec46",
+  "reference_manifest.json": "23edd299eddb8975fb9700aca15c586089b91cfeaaa4b1dd508824cbff733fa7",
+  "sequence_config.json": "1ee05536593103fcf40aeb5c9156fd22ba9d52932d9a7611b2869e9353a99615",
+  "validation_results.json": "23015196df16a2bd644281c6b58f9bf82bd7b7443281dcd2fcbd2927e065dda9",
+  "water_reference.npz": "5e99c77817ec75fb7cd96bcaca6a42214120d6d300667dc7eea90d710ee38e0b"
+}

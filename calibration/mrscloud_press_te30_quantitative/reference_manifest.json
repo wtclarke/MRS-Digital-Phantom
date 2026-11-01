@@ -1,0 +1,2356 @@
+{
+  "available_source_spin_systems": [
+    "sys2HG",
+    "sys4PB",
+    "sysAcAc",
+    "sysAcO",
+    "sysAce",
+    "sysAla",
+    "sysAsc",
+    "sysAsp",
+    "sysCh",
+    "sysCit",
+    "sysCr",
+    "sysCrCH2",
+    "sysCystat",
+    "sysEA",
+    "sysEtOH",
+    "sysEtOH_old",
+    "sysGABA",
+    "sysGABA_gov",
+    "sysGPC",
+    "sysGSH",
+    "sysGSH_v2",
+    "sysGlc",
+    "sysGln",
+    "sysGlu",
+    "sysGly",
+    "sysGua",
+    "sysH2O",
+    "sysHCar",
+    "sysIns",
+    "sysLac",
+    "sysLys",
+    "sysMSM",
+    "sysMann",
+    "sysNAA",
+    "sysNAAG",
+    "sysNAA_Acetyl_only",
+    "sysNAA_Aspartate_only",
+    "sysPB4",
+    "sysPCh",
+    "sysPCr",
+    "sysPE",
+    "sysPgc",
+    "sysPhenyl",
+    "sysPyr",
+    "sysRef0ppm",
+    "sysScyllo",
+    "sysSer",
+    "sysSuc",
+    "sysTau",
+    "sysThr",
+    "sysTryp",
+    "sysTyros",
+    "sysVal",
+    "sysbHB",
+    "sysbHG",
+    "sysiLe",
+    "sysmI",
+    "syssI"
+  ],
+  "entries": [
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Ala",
+      "role": "metabolite",
+      "source_spin_system": "sysAla",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            -14.366,
+            -14.366,
+            7.234
+          ],
+          [
+            0.0,
+            0.0,
+            -14.366,
+            7.234
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            7.234
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Ala",
+        "scaleFactor": 1,
+        "shifts": [
+          1.4667,
+          1.4667,
+          1.4667,
+          3.7746
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Asc",
+      "role": "metabolite",
+      "source_spin_system": "sysAsc",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            2.07,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            6.0,
+            4.6
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -11.5
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Asc",
+        "scaleFactor": 1,
+        "shifts": [
+          4.492,
+          4.002,
+          3.743,
+          3.716
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Asp",
+      "role": "metabolite",
+      "source_spin_system": "sysAsp",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            3.647,
+            9.107
+          ],
+          [
+            0.0,
+            0.0,
+            -17.426
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Asp",
+        "scaleFactor": 1,
+        "shifts": [
+          3.8914,
+          2.8011,
+          2.6533
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Cit",
+      "role": "metabolite",
+      "source_spin_system": "sysCit",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            -15.1
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Cit",
+        "scaleFactor": 1,
+        "shifts": [
+          2.54,
+          2.65
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Cr",
+      "role": "metabolite",
+      "source_spin_system": "sysCr",
+      "spin_system_definition": {
+        "J": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "name": "Cr",
+        "scaleFactor": 1,
+        "shifts": [
+          6.649,
+          3.913,
+          3.913,
+          3.027,
+          3.027,
+          3.027
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "EA",
+      "role": "metabolite",
+      "source_spin_system": "sysEA",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            -10.2,
+            3.85,
+            6.75
+          ],
+          [
+            0.0,
+            0.0,
+            6.75,
+            3.85
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -10.2
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "EA",
+        "scaleFactor": 1,
+        "shifts": [
+          3.818,
+          3.818,
+          3.147,
+          3.147
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "EtOH",
+      "role": "metabolite",
+      "source_spin_system": "sysEtOH",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            7.1,
+            7.1
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            7.1,
+            7.1
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            7.1,
+            7.1
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "EtOH",
+        "scaleFactor": 1,
+        "shifts": [
+          1.175,
+          1.175,
+          1.175,
+          3.645,
+          3.645
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "GABA",
+      "role": "metabolite",
+      "source_spin_system": "sysGABA",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            -15.938,
+            7.678,
+            6.98,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            6.98,
+            7.678,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -15.0,
+            8.51,
+            6.503
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.503,
+            8.51
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -14.062
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "GABA",
+        "scaleFactor": 1,
+        "shifts": [
+          2.284,
+          2.284,
+          1.888,
+          1.888,
+          3.013,
+          3.013
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "GPC",
+      "role": "metabolite",
+      "source_spin_system": "sysGPC",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              -14.78,
+              5.77,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              4.53,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              5.77,
+              4.53,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -14.78,
+              6.03
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              6.03
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "GPC_gp",
+          "scaleFactor": 1,
+          "shifts": [
+            3.605,
+            3.672,
+            3.903,
+            3.871,
+            3.946,
+            100.0
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              -9.32,
+              3.1,
+              5.9,
+              2.67,
+              6.03
+            ],
+            [
+              0.0,
+              0.0,
+              5.9,
+              3.1,
+              2.67,
+              6.03
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              -9.32,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "GPC_pCh1",
+          "scaleFactor": 1,
+          "shifts": [
+            4.312,
+            4.312,
+            3.659,
+            3.659,
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.57
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.57
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.57
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "GPC_pCh2",
+          "scaleFactor": 3,
+          "shifts": [
+            3.212,
+            3.212,
+            3.212,
+            100.0
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "GSH",
+      "role": "metabolite",
+      "source_spin_system": "sysGSH",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              7.09,
+              4.71,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -14.06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "GSH_cyst",
+          "scaleFactor": 1,
+          "shifts": [
+            4.5608,
+            2.9264,
+            2.9747,
+            8.177
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              6.34,
+              6.36,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -15.48,
+              6.7,
+              7.6
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              7.6,
+              6.7
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -15.92
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "GSH_glut",
+          "scaleFactor": 1,
+          "shifts": [
+            3.769,
+            2.159,
+            2.146,
+            2.51,
+            2.56
+          ]
+        },
+        {
+          "J": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "name": "GSH_glyc",
+          "scaleFactor": 1,
+          "shifts": [
+            3.769,
+            3.769,
+            7.154
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Glc",
+      "role": "metabolite",
+      "source_spin_system": "sysGlc",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              3.8,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              9.6,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              9.4,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              9.9,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.5,
+              6.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -12.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Glc_alpha",
+          "scaleFactor": 0.36,
+          "shifts": [
+            5.216,
+            3.519,
+            3.698,
+            3.395,
+            3.822,
+            3.826,
+            3.749
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              8.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              9.1,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              9.4,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              8.9,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.6,
+              5.4
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -12.3
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Glc_beta",
+          "scaleFactor": 0.64,
+          "shifts": [
+            4.63,
+            3.23,
+            3.473,
+            3.387,
+            3.45,
+            3.882,
+            3.707
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Gln",
+      "role": "metabolite",
+      "source_spin_system": "sysGln",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              5.847,
+              6.5,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -14.504,
+              9.165,
+              6.347
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              6.324,
+              9.209
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -15.371
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Gln_ch2ch2ch",
+          "scaleFactor": 1,
+          "shifts": [
+            3.753,
+            2.129,
+            2.109,
+            2.432,
+            2.454
+          ]
+        },
+        {
+          "J": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "name": "sysGln_nh2",
+          "scaleFactor": 1,
+          "shifts": [
+            6.816,
+            7.529
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Glu",
+      "role": "metabolite",
+      "source_spin_system": "sysGlu",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            7.331,
+            4.651,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -14.849,
+            6.413,
+            8.406
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            8.478,
+            6.875
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -15.915
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Glu",
+        "scaleFactor": 1,
+        "shifts": [
+          3.7433,
+          2.0375,
+          2.12,
+          2.3378,
+          2.352
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Gly",
+      "role": "metabolite",
+      "source_spin_system": "sysGly",
+      "spin_system_definition": {
+        "J": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "name": "Gly",
+        "scaleFactor": 1,
+        "shifts": [
+          3.548,
+          3.548
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "H2O",
+      "role": "off_carrier_water_control",
+      "source_spin_system": "sysH2O",
+      "spin_system_definition": {
+        "J": 0,
+        "name": "H2O",
+        "scaleFactor": 2,
+        "shifts": 4.7
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Ins",
+      "role": "metabolite",
+      "source_spin_system": "sysIns",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            2.889,
+            0.0,
+            0.0,
+            0.0,
+            9.998
+          ],
+          [
+            0.0,
+            0.0,
+            3.006,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            9.997,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.485,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.482
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Ins",
+        "scaleFactor": 1,
+        "shifts": [
+          3.5217,
+          4.0538,
+          3.5217,
+          3.6144,
+          3.269,
+          3.6144
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Lac",
+      "role": "metabolite",
+      "source_spin_system": "sysLac",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            6.933,
+            6.933,
+            6.933
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Lac",
+        "scaleFactor": 1,
+        "shifts": [
+          4.0974,
+          1.3142,
+          1.3142,
+          1.3142
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "NAA",
+      "role": "metabolite",
+      "source_spin_system": "sysNAA",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "name": "NAA_acetyl",
+          "scaleFactor": 1,
+          "shifts": [
+            2.008,
+            2.008,
+            2.008
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              6.4,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              3.861,
+              9.821
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              -15.592
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "NAA_nAspartyl",
+          "scaleFactor": 1,
+          "shifts": [
+            7.8205,
+            4.3817,
+            2.6727,
+            2.4863
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "NAAG",
+      "role": "metabolite",
+      "source_spin_system": "sysNAAG",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "name": "NAAG_acetyl",
+          "scaleFactor": 1,
+          "shifts": [
+            2.042,
+            2.042,
+            2.042
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              4.412,
+              9.515,
+              7.32
+            ],
+            [
+              0.0,
+              0.0,
+              -15.91,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "NAAG_aspartyl",
+          "scaleFactor": 1,
+          "shifts": [
+            4.607,
+            2.721,
+            2.519,
+            8.26
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              4.61,
+              8.42,
+              0.0,
+              0.0,
+              7.46
+            ],
+            [
+              0.0,
+              0.0,
+              -14.28,
+              10.56,
+              6.09,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              4.9,
+              11.11,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -15.28,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "NAAG_glu",
+          "scaleFactor": 1,
+          "shifts": [
+            4.128,
+            2.049,
+            1.881,
+            2.18,
+            2.19,
+            7.95
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "PCh",
+      "role": "metabolite",
+      "source_spin_system": "sysPCh",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              -14.89,
+              2.284,
+              7.231,
+              2.86,
+              6.298
+            ],
+            [
+              0.0,
+              0.0,
+              7.326,
+              2.235,
+              2.772,
+              6.249
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              -14.19,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "PCh_ch2ch2",
+          "scaleFactor": 1,
+          "shifts": [
+            4.2805,
+            4.2805,
+            3.641,
+            3.641,
+            100.0,
+            40.0
+          ]
+        },
+        {
+          "J": 0,
+          "name": "PCh_trimethyl",
+          "scaleFactor": 9,
+          "shifts": 3.208
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "PCr",
+      "role": "metabolite",
+      "source_spin_system": "sysPCr",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "name": "PCr_ch2nhnh",
+          "scaleFactor": 1,
+          "shifts": [
+            3.93,
+            3.93,
+            6.581,
+            7.296
+          ]
+        },
+        {
+          "J": 0,
+          "name": "PCr_ch3",
+          "scaleFactor": 3,
+          "shifts": 3.029
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "PE",
+      "role": "metabolite",
+      "source_spin_system": "sysPE",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            -14.56,
+            3.182,
+            6.716,
+            0.464,
+            7.288
+          ],
+          [
+            0.0,
+            0.0,
+            7.204,
+            2.98,
+            0.588,
+            7.088
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -14.71,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "PE",
+        "scaleFactor": 1,
+        "shifts": [
+          3.9765,
+          3.9765,
+          3.216,
+          3.216,
+          100.0,
+          40.0
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Phenyl",
+      "role": "metabolite",
+      "source_spin_system": "sysPhenyl",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              5.209,
+              8.013
+            ],
+            [
+              0.0,
+              0.0,
+              -14.573
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Phenyl_a",
+          "scaleFactor": 1,
+          "shifts": [
+            3.9753,
+            3.2734,
+            3.1049
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              7.909,
+              1.592,
+              0.493,
+              1.419
+            ],
+            [
+              0.0,
+              0.0,
+              7.204,
+              0.994,
+              0.462
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              7.534,
+              0.97
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              7.35
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Phenyl_b",
+          "scaleFactor": 1,
+          "shifts": [
+            7.3223,
+            7.4201,
+            7.3693,
+            7.4201,
+            7.3223
+          ]
+        }
+      ]
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Ref0ppm",
+      "role": "reference_control",
+      "source_spin_system": "sysRef0ppm",
+      "spin_system_definition": {
+        "J": 0,
+        "name": "Ref0ppm",
+        "scaleFactor": 1,
+        "shifts": 0
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Scyllo",
+      "role": "metabolite",
+      "source_spin_system": "sysScyllo",
+      "spin_system_definition": {
+        "J": 0,
+        "name": "Scyllo",
+        "scaleFactor": 6,
+        "shifts": 3.34
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Ser",
+      "role": "metabolite",
+      "source_spin_system": "sysSer",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            5.979,
+            3.561
+          ],
+          [
+            0.0,
+            0.0,
+            -12.254
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Ser",
+        "scaleFactor": 1,
+        "shifts": [
+          3.8347,
+          3.9379,
+          3.9764
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Tau",
+      "role": "metabolite",
+      "source_spin_system": "sysTau",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            0.0,
+            6.742,
+            6.464
+          ],
+          [
+            0.0,
+            0.0,
+            6.403,
+            6.792
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Tau",
+        "scaleFactor": 1,
+        "shifts": [
+          3.4206,
+          3.4206,
+          3.2459,
+          3.2459
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Thr",
+      "role": "metabolite",
+      "source_spin_system": "sysThr",
+      "spin_system_definition": {
+        "J": [
+          [
+            0.0,
+            4.92,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            6.35,
+            6.35,
+            6.35
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "name": "Thr",
+        "scaleFactor": 1,
+        "shifts": [
+          3.578,
+          4.246,
+          1.316,
+          1.316,
+          1.316
+        ]
+      }
+    },
+    {
+      "RF_carrier_ppm": 3.0,
+      "name": "Tyros",
+      "role": "metabolite",
+      "source_spin_system": "sysTyros",
+      "spin_system_definition": [
+        {
+          "J": [
+            [
+              0.0,
+              5.147,
+              7.877
+            ],
+            [
+              0.0,
+              0.0,
+              -14.726
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Tyros_a",
+          "scaleFactor": 1,
+          "shifts": [
+            3.9281,
+            3.1908,
+            3.037
+          ]
+        },
+        {
+          "J": [
+            [
+              0.0,
+              7.981,
+              0.311,
+              2.538
+            ],
+            [
+              0.0,
+              0.0,
+              2.445,
+              0.46
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              8.649
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "name": "Tyros_b",
+          "scaleFactor": 1,
+          "shifts": [
+            7.1852,
+            6.8895,
+            6.8895,
+            7.1852
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded_MM_lipid_entries": [],
+  "files": {
+    "metabolite_basis.BASIS": "21461662797fafdd6aa8c13f6eb1d3084da1db5707a46a253d15fdc4b38e298b",
+    "normalization.json": "fb38a3bd95602084b9659fa1703d4a6cd85a4b76040308f78eaf1f399604f83f",
+    "normalization_reference.npz": "f2caad36b0dabb60e848853c69747a6538b2215e527a840e3b955b2b3605ec46",
+    "sequence_config.json": "1ee05536593103fcf40aeb5c9156fd22ba9d52932d9a7611b2869e9353a99615",
+    "water_reference.npz": "5e99c77817ec75fb7cd96bcaca6a42214120d6d300667dc7eea90d710ee38e0b"
+  },
+  "non_target_source_spin_systems": [
+    "sys2HG",
+    "sys4PB",
+    "sysAcAc",
+    "sysAcO",
+    "sysAce",
+    "sysCh",
+    "sysCrCH2",
+    "sysCystat",
+    "sysEtOH_old",
+    "sysGABA_gov",
+    "sysGSH_v2",
+    "sysGua",
+    "sysHCar",
+    "sysLys",
+    "sysMSM",
+    "sysMann",
+    "sysNAA_Acetyl_only",
+    "sysNAA_Aspartate_only",
+    "sysPB4",
+    "sysPgc",
+    "sysPyr",
+    "sysSuc",
+    "sysTryp",
+    "sysVal",
+    "sysbHB",
+    "sysbHG",
+    "sysiLe",
+    "sysmI",
+    "syssI"
+  ],
+  "processing_source_hashes": {
+    "examples/mrscloud_full_basis_water_reference.py": "77bdb97a5293e00941ec0227db2c47d3873f2d37e554dd893ccae36f0a049a9c",
+    "examples/mrscloud_naa_response_decomposition.py": "28d8b04efea80f2f7576d9ca8045ed1f2c5e955b9a58f00369e9edd452e62b8e",
+    "examples/mrscloud_sequence_matched_water.py": "24013154b75d8c432133d8ca34d3f57629fb0c42f21387ef1fac63029d2db412",
+    "examples/mrscloud_water_processing_validation.py": "44811a6e2e5739af0041e9a1db639cb69f5d7281ba4a9f6e0cad33553427a87e",
+    "simulation/mrscloud_full_basis.py": "9af2bfe2eb50bc717b923a7ff7147ece7e6220d50459055bf60f75920dbd649a"
+  },
+  "raw_response_hashes": {
+    "Ala": "7c90200cd75fd415f71bceb7142e0f06e3c925eaa96200390bda03ab2e3989a1",
+    "Asc": "4a3b91f56dfcdf22fcebb8295e23d331e9492a3b37d0fd339606483d9eb41eda",
+    "Asp": "7d038901797929e9879b7163d2f017a32612e99f5d0e1af16de32c03e370bdc1",
+    "Cit": "370bd71be58c6bff0514583a67dc4797af22bd0828875f3c5d285bb26824d401",
+    "Cr": "ec9401539b29fbdbe0659e81c93701252129435d385f0d3ac1a72b4f72f8ca70",
+    "EA": "32b594f87e9abc1fecb597911cb644b9373fcafc3dde243c3361dc782b2b8786",
+    "EtOH": "2aad0990df74e029700fe3f7ee99890821db2670a14401bcb5642ee047b658ce",
+    "GABA": "48266639ee8298ebb7f088317f1e68be127b086fcc9921cb059ed32f86f426df",
+    "GPC": "2841031962858d8482656f3fae068c39e55defd6dc1baabd154be256a0d7030a",
+    "GSH": "5e7bec2ea480fbacb549be7ceaa502b684c305d3ad4a06470ce7e2eecde36f80",
+    "Glc": "5036e85e9f2abce5a5ca4bac9a1bb3ce6df6713760ca0626ac5ec2118d8f0168",
+    "Gln": "d687b69472b1880fa5242bf09b14e8c9c3a26657efb859a17adb355b5bdcd031",
+    "Glu": "d2b8aac83dce5b7a99ac630fee8fbbf2bb8e502618a093a7e7502ff823784bd7",
+    "Gly": "5af01193b98046ab39b11de4235a3ef71fbfd5b54dfca36778d8ee0e88720ee0",
+    "H2O": "007b606477b1d883e6b16bdc1a6fa7c479b9e961f55234f0a209a3e45f90931b",
+    "Ins": "5fdb18cf695129c7e0001b115fd1395a8fc052ec9f71b8b2cbc08b0e9745a5bb",
+    "Lac": "c59bad71f0328a05637cdc2e9ef46b3375bbb31b8b7d13adc2c221b69fb2d95b",
+    "NAA": "48de77e804b82da957001d7d7ff2c6c574b675e90e4e6aac639aa96e1a6ccd1c",
+    "NAAG": "51a9c1593a96b6a08f45e76bb28d90da7fa718a1db4d867482cefdc7e69c4d44",
+    "PCh": "5ab7e8d5f76d087f4d29cc06d1909194be34d789fd79683999c50ad52074361f",
+    "PCr": "8ce0cd0ca01f3fe4a1a53688faa49487ad978c87d15f28a30dc4013b6bac68a5",
+    "PE": "7345bb0314f26c4d6767ab6816dc278a033c0ec3d261ec70f6fc1aeaaa1cb656",
+    "Phenyl": "d4b78291891c13e90646e5923bb477606e231ae7204814f232cf20a608cda41a",
+    "Ref0ppm": "e5430d95f6ed3c4e997299640d84e38404a94685e4d34b5e87b9a1f1e947ef6a",
+    "Scyllo": "869a273d013cedcca64867dbce46ca86044a7d4bc535b6f1dd325fd4bbaad9fa",
+    "Ser": "1804b107ac6b177bae5d5b4c85fa4a0e617fb16bfc8458cc929a0ff6c3fac1e5",
+    "Tau": "bd56ec02fff217902c0761975175cd4828e1d7fc0c32c709341a11f605ffcac9",
+    "Thr": "265666b557e1dcf788c90ce557af17ba4ae7633083973367424fa30481abdbfd",
+    "Tyros": "eff8eccfed2c4c4900295662a490ed399e0539ed59ad3b71b43726d29109c912",
+    "methyl_control": "d52c7e1065995a7cd624b476d8e3cd81fa12c3bc5ceeda7f9c5610817c7cfa78",
+    "methyl_on_carrier": "ae2645a4e843c05df52f483003f0c615ebea3e6546565fec0417d26be70143fc",
+    "repeat_Cr": "8e01d8b137f0d94a7f86ac41e1c0aad660146aa13b1593fcbf8ae754e900fa9f",
+    "repeat_Glu": "f58bf8b1111987228a7bd3781c599c2f8c61c9b038cf1c0001a8d17f23681867",
+    "repeat_NAA": "08ba72319fdda5f10f13d29c8067fb6380100078cd9262bb20b4f220d29a27a9",
+    "water_reference": "ec113716685fb2b9481fde50cd903d3275536bdd5188a2c1441fa96efd50c20a",
+    "water_repeat": "6e2cda56211e2fc29796c131ca0fd639f6ae01b01316a1f24d4ac27ba183248e"
+  },
+  "source_checked_basis": {
+    "path": "/Users/wclarke/Documents/Python/MRS-Digital-Phantom/data/basissets/LCModel_Universal_Philips_UnEdited_PRESS_TE30.BASIS",
+    "sha256": "bac0042c2e9a688ef63abd88867a79fd24c659ba92da5c6a333e71f96ffa5abe"
+  },
+  "source_hashes": {
+    "examples/full_basis_responses.m": "4dc1c6bc9680daa1a646b4033e64a433bbaa6659ce4ad65325bf0d87fd8c0ac9",
+    "simulation/basissets/MRSCloud-main/RF_GOIA_20200506_100pts.mat": "9b1422f26a0816791047e3edfa9f0f35bd32850b7d67881c9def8b604fa23a2b",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Ala.mat": "a1bfd42b33ae7f012963508030441cee852c8aa861a6b9b85813fe7b9cebc7cd",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Asc.mat": "fdda9c2c1577c1630076519de6aa516ca089a658cc63bc6c1fceed312157ba47",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Asp.mat": "c5eaa8886d124ece34f9adf50f2793de81df9d9e247377a0862b3cfa31fbe201",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Cit.mat": "5caf0aea808c8997edafbbf4ee5e6d32ab6f4a4ef236d4137a6d51965b87c7cf",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Cr.mat": "e77ca29881a9f0beedba8664df6d8b96535a970ecf52ad8cff937b12ba30e46b",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_EA.mat": "d2dadd1904bc28a09edf98a269affaa9c5d81d214742c9404942c129105f6496",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_EtOH.mat": "76c0ad974cb23434768752929a4d38d9761414b879e9521869b5d93c64542208",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_GABA.mat": "867fd6d4252021e7b0423d364c44c1dc8145cbc4ff015d4d7e6962989d6e1443",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_GPC.mat": "1f9ffe0f96700d7dd731e9105fdd6faf876fa421687dcf33eb12af3c2aa06cb4",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_GSH.mat": "7d91acfe1db7a1e133b59e5250dfe1f576844afad13037ddd2191c8009d05e9b",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Glc.mat": "1ea0a33dd869b72286c040a7f4fa043ae3ca7d59334a13d8e687e6e4e2399ba6",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Gln.mat": "3f39e17f54077a30e133fcefc12514e4d88125061bb6cccae4edf7f8e4657ae4",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Glu.mat": "60969570d12d59f555f30e603e10a5875af3e5cff8664a0589b7874595f15d6f",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Gly.mat": "18572e235f06d9aa3c6ac4e5494e6f6ca3b9637975d3d1ea025901440da5b958",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_H2O.mat": "62ef3e655fbdec35408e8d4685a0a9979cc2f0505dc7a932e2a5de91ca8fe456",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Ins.mat": "e06d911d616c648ef5d43decca145ea57389caa04dcd490e658cd48750136f83",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Lac.mat": "dbcbefc4f8dc2533bf6c571a14f0ec82a16d3e40944f46e4b02b579f922790fb",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_NAA.mat": "55e6faa7220c858997cb63298f716c5ed36588f0f375fb9d9161c43c47b0e55e",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_NAAG.mat": "11a6dc86ad40f6aaf74ca871a92075d14728dd5a99272f1f804b22a0e67c4f42",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_PCh.mat": "015975b603e270b9f9dd5f6f7797f125c3b46e964390047ab9d1e95b2786a6d5",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_PCr.mat": "8fc9375c93dec1e9013b1b7bfefcaff3de23cfad219947bb832760328effe0ca",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_PE.mat": "d565ce3ce8bc79c234371d97eba945ad92f2d1ca0e78a9a320699d77ee85c272",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Phenyl.mat": "384773fd9f364794615374371618dfa53c73d842356de9b81ab10486a3df833f",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Ref0ppm.mat": "e4f6de4ccbd803e681560e5b92ce8ed68b061b0dd5db90f05beb23e11d3cc530",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Scyllo.mat": "58bb78f726d5a31fcf53d41a3156c1bb57380136b86c7a9618e50e379c9a1cdd",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Ser.mat": "cffb0261072265928b1ffe5f67018d56069b242f066221fab999c112089ccee2",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Tau.mat": "0ab0565d0895e437f865bf7012e9852263a56ac37629bf35078d6732c1c65d96",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Thr.mat": "d95bbdf954708c8f228efac5d700393578b8903db05308593efb1d8f2c2aee6a",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Tyros.mat": "5bd7369b9f0e793c8f172fcaba21cbd0776cd29a570d0229d430d278026309a4",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_Val.mat": "78ea8e388782935de0534b138f09b5e7c8d2b5f30d5362b81bf3c85256f1274e",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_bHB.mat": "1c3994cab146a6b68df7864a1390b9c4b2085482404f2b8d5aee0d2d9d624fb7",
+    "simulation/basissets/MRSCloud-main/basis_save/Universal_Siemens_UnEdited_PRESS_TE97_bHG.mat": "4fdf7ffab08d870ee540075178ae0d048e59532242322ba895e16ba063d4a1e5",
+    "simulation/basissets/MRSCloud-main/buildall_linux_SH.m": "fd3090299c99b544ad71f7932ba4049986983b58b4ad2796fb6051dcc13bc753",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_MEGAsLASER_SH.m": "3332367d3daede8f734fbe4292d3d2d4214ae4856d05e4694fdd8a749bb1bb5b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_getLWandSNR.m": "88b4db2054add89ea41ba2c8c7e99e0db97f8ae57205c5fdf462f25908f0b2c4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_make2DSimPlot.m": "bb4c9e4a50f10efe85c84225985ec967429e275e5733b0be43d157c2aca6b8af",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_megapressproc.m": "ced84e87ce56ba2863484173058b110bcb7e77f9b12579d75f8bdab87fea0527",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_megapressproc_GEauto.m": "1ab1c02223a353a062b4113a7650d9c3d42e219f46abcd3cb3d5d22b7c69ad1d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_megapressproc_auto.m": "7769be19dde882ea7c29fedff9d6bbc79d498c27987064b74b9899b77e078fb4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_pressproc.m": "928d7e68b99a6f2abf032901f89a6cb6b60bf812294da5362320aa5dd7ca85d9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_pressproc_GEauto.m": "ac868675fd619d66ee85bb7aaa3e75d79b12318865250ad1904be29eed5ba058",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_pressproc_auto.m": "4304b584912966de47cfbbcfebf954f3625bfbc3efd4bb67df3657e191161e1b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_pressproc_brukAuto.m": "bafae4f6a382cd87516fe489c786b16345a0f1f18c3289ead285f001ba49968d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simExampleBasisSet.m": "bd5d7ad161ea72b8c3d91c659d84ad70bb680d4d6056216d8493265c08d5f383",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaExTEShaped.m": "7ba4bac507afb209e87263b990a7fe10651d06117184344503ea4eea087a350f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaPressShaped.m": "0842f24cdf0a23558517fdf192257a4699687c19e686e24edc548f9876c399bc",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaPressShapedEdit.m": "5d690dcd142a40a4876d08f89914686211e13f45b6f4a62e6eee8b62968ccf94",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaPressShapedRefoc.m": "17a670fc02747eb3abc5112ab72c7416dd0a19bdd8e412107a6ee25ab0bfc8b6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaPressShapedRefoc_fast.m": "e6e7543f4735a9324f24967fcadfbae1e6ea30bb0dc73ec7309de57a62b15e12",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaPressShaped_fast.m": "26b619eb72e98da0f2773a3ebeeebd700382c1ba8c1c4613e40aa2814bb349f0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simMegaSpecialShaped.m": "3c2ecd7842d429d8d27235179b15ef1dc92a5e8f4ddc706dd34e9551d0c6f603",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simPressShaped.m": "d69e0d15651345cbaebbb4e172d254a5498f9503eea57a5fa48a101fd96f2c82",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simPressShaped_fast.m": "e6db3464f3b1d91720cf3aa2abb8bad3cba4f3ff9d270ee9bb8585bdcfc494ff",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simPressShaped_fast_phCyc.m": "c12e00705530e7c5aa9d65d8b2f8b36e46fc63e87aee69fc08be5ac8aea208ab",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simPressShaped_phCyc.m": "feba4685d6f219b9383391f0a8fa5ebe9b682ed57467b4992ddda719a2d8e909",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simSemiLASERShaped.m": "2a099a7f5b022ebea22edc96dda48e82e13496f5f653b070e7554e68e33abf44",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simSemiLASERShaped_fast.m": "8ba364604a478a5ee0d808bd6c415ef70569581c326a532c1963d63e5bdc7e70",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simSemiLASERShaped_fast_phCyc.m": "acce25f18bb2c6d53e0d467be1a8108694efdeca9cf64bea1fdbbeba65973496",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simSemiLASERShaped_phCyc.m": "1f964d45f8b1e3eb0a44ee9e2814200f716787178d8e6667ee261c348e9b540c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_simSpinEchoShaped.m": "c5ab42dc21628f400fd0584d116cd2c5bd6e5382405df52d48f2a4c08b0ba33d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_specialproc.m": "0eec2311a8fb27717e678d04c689babfe15f57c333dd3bcee5674391b7a0cddb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_specialproc_auto.m": "aa6c0f06e9d8560e88f11d8ef7b0bc8446574d32241d616694cb29e17dff8ae2",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_specialproc_fmrs.m": "bc5221e0968020156bac93500deb812b0a770e805ea4be85261e18a3bed0dfb1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/exampleRunScripts/run_specialproc_fmrs_slidingWindow.m": "b95176af9e1dafad3fd148bec60bff0ad7c0ca15e477331d35790a3774113a2f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/SiemensCsaParse.m": "11dbb91fb4e364efa342c5d486f1c540401324493c63dfeca920498387055893",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/SiemensCsaReadFid.m": "ec8b020b5f4a2afcef884a1eeb42eed80786a684e0bde79e54646b96b72de2d6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/dicom_get_spectrum_siemens.m": "67d178362edb1c6c2aaaa5394491a9154c29e50e8a665f23f122013e68d5e3fb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/dicom_move.m": "2d84e968d24cc312e2098f7800b17320be9fc43b040c1425b4d4a000c4675ff7",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/dicom_open.m": "5e8e2e2a671795d98a117dc2baf0f20a8a15bd93e1e02deb140a56a332d5d106",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/chrisRogersTools/getDicomPrivateTag.m": "c6949890e55b6052aaf53644b2e50e59feebed40b08912dbcb27d8b0e6f62d9c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/GELoad.m": "cac5aa2b5c65f1a260be6409b7fd725dd1f874b24407b3f453c3c632c2e61660",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/freadVAXG.m": "e00caa9ab5cdfda461a8d8792b89298485dbdc60eeb9120726ccbab5a79301fb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/philipsDataLoad.m": "a75732d3d72e29dfb9198e81385915a57528caea3c4f215d209a54d3fa05d11d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/philipsLoad.m": "8edcbd8a381fee733b2aea985621aa1e591f60374ddc59f988c62a5f98b275fc",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/readraw_Gannet.m": "fefb30191c55fbb252362f6f97bf62ae29e94edc3bf490d5e5272f633f9962e1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/gannetTools/uint32le_to_VAXF.m": "5f1e426154708ffc09ae55f63faf23a3dd06f1eb1cda39579312a84cc66564bf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadRFwaveform.m": "a98d28706a373726f53f74ccf9a96e6767c1d55804b8ee3fbbc4e6e4f10fce22",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadjmrui.m": "5ef189d64fcbb2688be20311b7467d5e15fc721ed4a312b0b12acc8314043d98",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadlcmdetail.m": "8064b4c80ddc0bcaefb2d3e6e17067b59e84b9539165ac09fc2a770de137503e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_GE.m": "4a8e214a1535d360cebdefd82db4bc63794cf24f46a907840daad883cac77026",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_IMA.m": "b18144ded32cc4be03e116f44dac383209032c085d1c565e4cc8c1e70ece17b6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_bruk.m": "e9eb3086794937899cc204538c117a3cba5d186127c5ad9d25e45ccd1bf60e18",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_brukNMR.m": "211b79d546c98d7f2b424703220c3b8e8335870944b8bb3a7348754d1f709e6f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_data.m": "465ec0428130a5530b422b7df4aab6c53a25dfe3f420428298894ae533917936",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_irBruk.m": "bbbafa18f658a4bf68792809ff30a72637b65fd2057ab3f6bf5e0c1f8658c3cd",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_niimrs.m": "f91a37d2d8c0759e876a7a56c43f62c83b32a5a3019988d23c120e531d727207",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_rda.m": "1f9d2f5887ac2792d48cb4fb056f94330107bbfe06fa6f3b2ad8e07d48b768a6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_sdat.m": "b6f00bbd417edec57e37503ac0b2e601723c5159d8233d122ddca1b931a84dde",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_twix.m": "e403b486eef293270f8425626a7068781c7aac36ac5ed59bd5341338ff7e337a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_loadspec_varian.m": "384d23bd5c5bb746f5c7c3cdc6326450cbb3711eb685e384706c2f93fc5a81b9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readRF.m": "45b2949faca19423acdbf67a4e822b624f4690e85a0cee99ced8f1288ace437f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readRFBruk.m": "61bdef440f8592a74aa363dfc3e28a8e2dbd6e4b982b11b0136c93412526767c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readRFtxt.m": "53f52813f2c8fe9e0fd94f8f90d5d4efbeb700c79e1bc53718013596da0409e9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readjmrui.m": "41b7da787baec10c22ea0f953c01cb6691fd1c798ff8894fcf9cf87e23f33d3b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmcoord.m": "58daf1483c673f3db2d1a2d43737fd406afdfaad4219ac9011cac670fc8ad4bf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmcoord_getBackground.m": "47b6a3b9a4edc1c8bc45191adcf55733cc98255c286f78fbd884fcd8e78d5c04",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw.m": "26038a0571e887b0960543628cee426ffd8e996829d8764c74409d0f548eb34f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw_basis.m": "59d906c46350b78233b551b87af3eea74f9f81b79bd35afcc5bbb961d8765274",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw_basis_FID_A.m": "6bd3a76d65b245da258860be931d02cdf6b1a2435664816a9dcfbaabd62c4de6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw_basis_SH.m": "ef562360ef724cd34259f78986eda9fc1409a784a1071e560aa893dd6c17ad61",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw_basis_SH2.m": "ef562360ef724cd34259f78986eda9fc1409a784a1071e560aa893dd6c17ad61",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmraw_dotraw.m": "8d8e8e72b80414664824e114e13cc1516fecdd1372e4f715c4822cc277ae28b6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readlcmtab.m": "10c67adfc88e713a87bc12d6afedeae3753a7b2e5d5be76a7958ff863daa94e5",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_readpta.m": "239e5636f30a5fa34fc9bc08ae115b327a5558dfaa7993b62e50f9caa1258025",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writeRF.m": "b13ec2d31430567faf9ef1e40f3e09dd3615001b31949206e2be6664e02c83a1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writeRFtxt.m": "c56e5fe6165b2538923c273696ff97024b238dd397005af5c433cab963bccd1d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writejmrui.m": "b7db722aa74766ef4c87fef72adf08812a874727138d0fc5a901d4e9ef871900",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writelcm.m": "15a6704391cc7434f75dfd81cb6df345b21df397fe373153d76d72c445f3de68",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writelcmraw.m": "68d9e4b413b07dc92862a1235518db199612e8393b5ec7542ba5319af58915ce",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/io_writepta.m": "f6cbb6df524317bb08a9a7b34dbeb382d333ad71719e1bb3929ecfbad13481d5",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mapVBVD/mapVBVD.m": "e00d161acb567e7bf287e2000a025b16c67bb06baab3cf569c3797d5f3c142fd",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mapVBVD/mapVBVD_tutorial.m": "5dccd2fdd0e350b646213813c4153d1e260c5f12f7f5e18ba8d7576cb589e22e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mapVBVD/read_twix_hdr.m": "3180550303389fa26b3fd9bfe5c69c50ccd8e3b65482da3e58f8bf6d44569ae3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mapVBVD/twix_map_obj.m": "33903e4ed9674ebae8fd1897b298d8a224e8f029131ae10a35a07e1aa73b919a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/fidpath.m": "41e2c445b742d2ef47c8a35b673af6dfe940e1f07b29285d97ca19e6d2f96faf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/fidread.m": "6fd3ff6186d3162c802d394aca4806c03bd8e15c9a9bb31363fa96d9b9818e97",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/getparam.m": "6221475e0a15bfa562c280206c3ecba6a3f796b51c2f6af93b3d24bd92d50c42",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/readfid.m": "56e74ab7b4d1856df20b9df2371eb62469d5f779b74f0aa11fe5f3cab4762020",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/readprocpar.m": "a84bb33e29d1ded864e9feff60bb162cc3bbf6547d918febcbf9b1694f8e4a39",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/readprocpar2.m": "ef5aff84bc44bc7fd37ec10ddab71964a1d2d2deed793d96dd9c8baf9a321346",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/readrfvnmr.m": "3b96dc509b3c412f2e85155699c480a07a2905975b7b6d9f76420cec69c99d04",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/writefid.m": "e3d8d9960cfadaa70163afe6223b57e8b0c9049fb9c9df041b36a7265007d3df",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/writeprocpar.m": "d7be71c1b2e4892d0c01ccdcd7b14656b8ed6716692ccf8684d51a62b20eeb12",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/inputOutput/mklassenTools/writeprocpar2.m": "768fcac77d1ca246cc8208ec10c76d4c8f6a02a7cdaee403d29268f3f0c2fca9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/SpecTool/DiffTool.m": "e7fcd81d629a0c13c21abf40a64b38ff181cafb03cf255ff156e760f0b88e054",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/SpecTool/SpecTool.m": "18faf97709f0a16ab406b5d9eb35df0bea678c92c4c181055779a19ffde9aaa3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/SpecTool/subSpecTool.m": "630147b93c9d670b955c3955660d5d7edef4d78da834875af4991eeee6728d85",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/addphase.m": "335ef0764a9bbc668e8f15a3b56506c7765cd7149966a1849cf70eb0b8e3b9c0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/addphase1.m": "317dfc2f8f4943124ab3d2aaced66f053049975b43624050a6e1ece4198848b3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/distinguishable_colors/distinguishable_colors.m": "3599ada36f599395f667adabab9416539ef356ba87ef3574e77cfc75098b1a9c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_ISIScombine.m": "c9526d7e37983ab055a77866ffc71488fe159ab2e08035515aec6e27ea3969d3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_addNoise.m": "e400071f8b6a52c661ea8a9016954ae97b8d8ec1a48f4cfbc5c5e4f7897ce70a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_addScans.m": "aa2b1ef9ffb7da1759367d5c12796d230de00421e1d07ae181fd862c63a3de00",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_addphase.m": "323ed77ac41116e27b7ff956033fd3afa85543e660875ff3d93dc196f8277e3b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_addphaseSubspec.m": "6695a9b62cdb1a2ece7317a47be4366bb334f1aeb3a83dda012e5745ca21de06",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_addrcvrs.m": "a5bee8492ef0e7f67eba4c1cd4d194b5f41c33106564dea24f776cd5728410aa",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignAllScans.m": "be7efc7ef0e5a534659ceb490cd23624136597de395dc508bd76154772f5dbc5",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignAllScans_fd.m": "35c6bb205312bf85295c79af9fde0e6b148d6d3362827685f01eabf971fac06e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignAverages.m": "416d27b0bad1b8fda8b2f2acf55221690994115a913047e64e2138ff7f5e1b05",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignAverages_fd.m": "b89404a860255fe4342897c2a335e3a9207fdeabe83326dc51eb30da97044e56",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignISIS.m": "143133434cc0ad7b0f5ac0235ba6f3e850af560e6a5630105888dbfa85b775bb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignMPSubspecs.m": "3574865220890a375ed428aeab32eeadfac4bb05878717cfaf5973e74264495d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignMPSubspecs_fd.m": "4d0bcc09e555920d181e354162fdc506fe37ea24d55d74bc78066891da0be3e6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignScans.m": "0c6d101a48588980b2b537e8e92950d3e531ce185b8ee7840c6ac6eb856a83fe",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignScans_fd.m": "c464f270759cea9abc1e2e012477d5179e18291a35c163547627f9334936cad1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_alignrcvrs.m": "b766317d9501a3d909f36b98dd8c3b4d03eb06d173fee4ef608e8a6bea7a585f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_ampScale.m": "072eec3ffffe8618ca707dc3faaa51282908ea5a665cf508b17ba0ed09cd0e19",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_arsos.m": "663a23ff68b5b6aa26124015cb4fbfbcf0451e46d5b78ea2d53eeb51f99b3fa9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_autophase.m": "8167b58601fd5f5d5efd09b8c13c077f3c48776808f19bdd9a93a67dec39badd",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_averaging.m": "a7f276ad54b4549f33f34d2681aba19c138ab2f4713e170cafa636b88c1c8a07",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_combineRcvrs.m": "2bdfd12967231ff4225e2d2c9807dcf37b85731818367063a5c978665577458e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_combinesubspecs.m": "409c9584623a0f8b8d8091a67c5c9f1f70f6eba8727e312922e3758a59d94a5b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_complexConj.m": "66c2eddf5b79282bbce2ee91d37d54065e89891d76cb5f957d51cad8079ae236",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_concatAverages.m": "8fcead0d67e593c76945cfd3c91215c706d937d952fc278d7c1f22ced0ca4dd3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_concatFreq.m": "6d87d24f51a1ec572a1f963b998bf27de8e08634c6dd12d45412356a3a5bf020",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_concatSubspecs.m": "9c6f2b65c0ecdc650f57b8a8c3e5fbf68c49cfca81d5453e332850e68c408009",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_creFit.m": "0a6e61b8b33c6c0f1463fa9d7b01f8c9968d587d7c71ac9b295d80f4c9e8519e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_dccorr.m": "8849ce0937a4f32e8e160cc9b1bc131054f14b332387b6a229e1cc5cc628edcb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_dccorr_FID_A.m": "26d707710135a7b214d081cd3ee7f38577ce8693b8f15a311d447e14b46336fd",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_downsamp.m": "b2d95c356084c5853c05d3b0e12aaf0665f97f92e2e9d17e1eb1c26b9a6f973b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_ecc.m": "f81ffa8fa15c3e27d236dd89a015cd418b01658f9acc5e08f2af4985b24e5905",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_fddccorr.m": "83d6820671b464af5ffc6b9f806e9411f97ac6ec9a20f950ad46c847c581e7d6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_filter.m": "7d550ccd74dd1525f2976822f032cf1ee50ddc3e4e31e7e6891d6ed6c0a3e43f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_freqAlignAverages.m": "76530e0ed6bd22a79721efb159c82956a5179e8e7df8ba1ecfe0fe1e5aae8a47",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_freqAlignAverages_fd.m": "8b832693d5733834ec53532eeca75add212cb56a08a2bc0eb1d11d718c2c32c4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_freqrange.m": "582ac6af96dd1c19e5e7715b8701dda75a58add4c8fe6acf04038c8578f23475",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_freqshift.m": "cd23fd4a0ea6f07c7fba943feb0f87bfdd60e2521df2d5df7d71b079aff68eb1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_freqshiftSubspec.m": "56ace726e7d46bd843d937f3aeff4b1a9805f6efc9b36d715590cff4bf9e248d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_gaussianPeak(old).m": "cf6e26f876c6c4b870e41b211d64a98380546bfa0cb3983e9cf04d02de6be783",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_getLW.m": "2d7851d4041cf1e866c55e07423bfb394257bd14b425442d1e261f14830fcf2a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_getPeakHeight.m": "2322d694fa9d1c93bb70e70fd8bde11d2fc5aad9077a7dda0df24c8c9dfaca20",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_getSNR.m": "19eb6d51d98217d34924bfd48e81af98374df993008a487a84bd94de6014a93a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_getcoilcombos.m": "886cf70c20951230f9d9307e3b432ff545715027d5446c0d7c757e31d3633f12",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_getcoilcombos_specReg.m": "524be3f483cf236a025509783d1223193ccb487c32a20b4d8dd79021a1d17040",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_integrate.m": "962578d4fd7638bc2c41ab4dda2910f0acef16a2ea4a3282b14e47e7fab9bf02",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_leftshift.m": "ac9e7339d4083051b7ae9d135c8e08b51f60002da436cc484e17228a0501c028",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_lorentz.m": "c99eedd8a207e146127f3d0e61eac538ea7cc0c60880c4c6ce205c5d36640c8c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_lorentz_linbas.m": "067c515a49c9a63d01208763b38fb590e7b7adf943b6a85ee0d088eb5f6bfd24",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_lorentzianPeak.m": "ebf25320589f01309fe37e42f351a9a98404d0854044c11936b815cc697bdb05",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_makeECArtifact.m": "5b537c030a7dd2b2972687620d95629c1020fb4813779b9cda2f4c80e15d59da",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_makeFreqDrift.m": "8d7e650fcc5cf1d2cbc7516c7caf892ac37acc41ae1b8f1f2a66ed874c86cadc",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_makePhaseDrift.m": "a4ef27d008161d38f6b203a9ffdefde0801007c6b9a7719b1ca7bcd12185279c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_matchLW.m": "f03cd9a9d16b8b84dd2eae8f83fe61cf5fa76eef5fe9fcfa30ce6df940c75d5d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_median.m": "6be00ae4823e11cd6bb2d9709f19a4e95566c135000e7976563760cf5f058fac",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_movef0.m": "c90268be3f6a6db5a86247a5317f0752150f191b968a3c2534922124b4e357ee",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_peakFit.m": "21752c8aab0a0b2445ff194fa7ea3d0838416069687b9fa68d3f7f2f3b0756a8",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_phaseAlignAverages.m": "eb918abe50035b03efea4f9f103e30f672d752dbb1e38b469bc0800e33b51bba",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_phaseAlignAverages_fd.m": "a69d0b796319fbf21e9bc9b76758eb28c4cc3d45d27ae15755ffef881bfba70a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_plotfid.m": "6a893a368c57d59a0f033f78ba596c9d53fb305833404eebf9bffa4199ae6b40",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_plotspec.m": "86587768d9392d4e338b10de857e8b8ee0322b496228698f5ec3fb3d2e9682a4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_ppmref.m": "1d02d49a805e11538bddacba43ad6be408ea0e65f638b7dc14a112d9e63f07e8",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_relyTest.m": "edbbc20a3461cd9dbf0119fb159aa029ee87a0585229a5f1d7f19377be1dbaaf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_removeWater.m": "ba51c7b1b4acfcafbe99c2b5e6a46aaf2218494e3bd8f995c9d0660dde3376e4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_rmNworstaverages.m": "2ecfb5d7e99cbe185f53423e99b9b39b8b3131e14900b953d1a46624f54342f9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_rmbadaverages.m": "9cc2d22ce355fbdd3e86519b259af9d3b3c35708e94151e02d2a1c931bc965b5",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_rmworstaverage.m": "65d344f5917317719ef9e67e6621a68a66b6037a65d6fd8c0238bdb9a9b8522a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_subtractScans.m": "62c189c785bb4933ff33ee4440f5b213879f5aab99e4741bd2013d76d98a2b67",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_takeaverages.m": "1bc7ec10286fec8f43152983730b57d923c983fd0a3c9d8028235a8417d3ec1b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_takeextras.m": "be97acb812b389c676181094d8963cb1237dc5e9b3b4b4235a618e47db45312a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_takesubspec.m": "32e9667a1a55e472c3c16ddd0da8b92c72e29c21fcdf07feb4636a701fa7298b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_timerange.m": "c445a7382228ba07bcb6404867eb22aa19b1a1c12cd52c3c8537eee1fcf569fc",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_unfilter.m": "7df25882b21c07bdba5c8efb4c2615a5c6f55a35e19589064799d39acb2040e7",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_zeropad.m": "c6d1754dbf72454399fb101b8829cdd9d23e5bc6abbdaca444330ae1992f6fe4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/op_zerotrim.m": "7311add2fb5adeec18805fc98e8b060b35313b70403f1315564bf1fcbcd3be83",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/phase/phase.m": "8486e410b32cddd1763af57553b117864b2e0a64d757ce934ba14d54f49a44e2",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/splinefit/examples.m": "d74b4247de54cc898747d0d958da42d16f8ab5da007188f344a6fc0357ddde69",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/splinefit/ppdiff.m": "7c467b68703cca98f073fe86a6adde999f277cdcd796cb225ce99f5cf3bdf82f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/splinefit/ppint.m": "965068c0378e37422bf187509ff800a3c6f6caecd5be7d3ae2b7d5d3d7705d8c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/processingTools/splinefit/splinefit.m": "a0bc97c94f259b90fe9b30f1f2888a4473cc521ab014abd8971210d07057304c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/mklassenTools/bes.m": "08db3203fd4c4f62b43243bebfdb924202e8630111a83ad7091054bae076ece1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rfPulses/sampleEditPulse.pta": "28fed91e43a8fa8967aa30822c636e8463397268d121869bc81957ae677a4551",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rfPulses/sampleRefocPulse.pta": "3c0f7b4e86cae3f9286d1f7aea6ddcf46d719ee30e6ab35a1be77f84be5e9747",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_addGrad.m": "5610e14ebe101cef20c23898ec36e07f95cfa18178708fd35a2a0b8e769ccc61",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_blochSim.m": "bcd8f3e164248d829db473dce3c0317bf74c851dd652b7add87285bd318e9917",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_dualBand.m": "847da2c1d192e0d6503a6ad218fa111a54db14ad7e796c175abf76f12db6d9db",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_freqshift.m": "f3bc942a47e047f3c244b4f6a24d3f050af136974b9616377aad09825bdc8360",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_gauss.m": "f085f81e61e724a31b6b88cd89c06e7d4fb8dd90f7f3c2113a5e14328e7602fa",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_getRFPeakPower.m": "1b8b83ceea0cf8d43a1b8d1f994e97208840b17f52d72ab5401b65bd4bff4323",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_getRFPulseEnergy.m": "c6a2b262e4e7c539d280ecee45cf8dae20472108f13f54010f946e967e5a52eb",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_goia.m": "a410d6c40fe22d18b1c52f829b31cbf81ca61bd9a110c6578c4b7d7d55b1d462",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_hs.m": "0ba95972591e0752bc928c877c5d191f0508bd1f11b27201e2805569c6a76ad7",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_plotWaveform.m": "ab05a1ae088433a60ee7001425c81aea9cea11117ebb1e381e1d45b48df34425",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_refocusedComponent.m": "6ed89300689cfbad7783ace69ebf7fc176400c187b5af7f9d9413130cd5413ab",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_resample.m": "eecb74404207340a0a5292f891fc0541cbda90faab7d72e05f5dfff9f5f0291f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_scaleGrad.m": "69957588f9b893c7fbc22ff73ee9798d637402a37ee245034b0b5d964745600a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_sinc.m": "63b93497da3d36d23f3b6233057506f433826589fe802be3f472484e75490f67",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/rfPulseTools/rf_verse.m": "e0402f0fe5dc0739458905075c4fe01d5140dd395397b1934e2e45a10ddc096f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/2HG.mat": "ac2a2617e708937870ca3083b6db2aa82d5a29b6177417e5b12c9aaa8541de9b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/AcAc.mat": "9b838f3cc8e23575e7100b5b8dd891beeb4dfea0866ea065ca18a6e767955e5f",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/AcO.mat": "44c9c5eafecc7b70df0751a6c256bd481d237f0745eabf8ea9ef7e7748f9893e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ace.mat": "14b4a7bdc492a53cda49c334e98f7d7976951589f7ccb5a0683b02708ccb65b0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ala.mat": "41bb2a7ae543a4174c7fa32866439d729a67f1129f814c9c7aaa7035c47647fa",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Asc.mat": "9d6034a71afbd122a4e9b8a9581d555bc72a89382bfb827979e6fb86f703983e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Asp.mat": "80ce90ddb473b77fdc5a781eef09de779ec0b462470bdb714e6f2d1e34fe2e30",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ch.mat": "4eafad89ee1a1d4dd5c20dbad8953bf22ae20bae900071c4bf0413f4ba810eb4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Cit.mat": "343412c91cbc98024c65c93a7f182df910d6e1868ccf56a4417506d88e2d9a28",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Cr.mat": "5f81b997217f6adc5f52681f0576258ab0df8a455a6678c107d5fb76b77b438b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/CrCH2.mat": "34d7eafddcd7e92428514f9644c4153b7179d522f8af050e3063e7155d109139",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Cystat.mat": "8bdb79f264da1e1f2385d9f07aa62277081f9b6e7a03b5ce16b425096dd99863",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/EA.mat": "31831ec8056fac17a5b237cb893b1d1c526d0da81ee65f7a13fccddba901c780",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/EA_old.mat": "ea3ea11665458071535043bebf7bf6aec75d98a12686ea79a67fd1ff58cc9fcf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/EtOH.mat": "0dbceef13eb3d25f9bb8c0526d1212befad8c1e8c968e9b4906894c107a4d020",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/EtOH_old.mat": "ac516cabd8880aea7e9b1f4c709ad45ab2fd9d0f479cfd61eab8e614ca41cb47",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/GABA.mat": "a05bcf4c57122572f27906df98d3c7ba8e81b773bcc7cdcdf972a9633e71f258",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/GPC.mat": "59a51b39f493e595df344f60b3b1c0d2e02d47b85f383613cf287da4bc17acae",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/GSH.mat": "96c9535db65c82417b22b08fac34b2b12221b995b271bdc8921d5dc0392098af",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Glc.mat": "7b08abe5b724fa0a6cb4680a71c6e277fbacb95f916074a80a4a498a1cded190",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Gln.mat": "e6c4f2e3db967102092b4c10d0b8a892ce6a310d2a62cd0935d18dd037cd5a1c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Glu.mat": "55d1baebc3f2c2d7630fc977dc7d06b671c8350e1406874b38d6f1f0cc2a601c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Gly.mat": "59ecbb8de6f30e63bfa41ba99f181a126bad8acd7f495d7a9eae11f6b771ab6e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Gua.mat": "57c433bfa236387b9bb004ac9dab256d31a70a74e3a3f8067a2d7dc7f65ea14d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/H2O.mat": "a52f9608fbf0962478114fe54146621d13393c55e9e59a1208ef8434f8844ad1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/HCar.mat": "a40ba327a977ecbeebcc657d7766efcb49b7c7bd196925e6bc70a7717cf48b43",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ins.mat": "453ee9a5f847291dbadc7f5236c428a4ecbed95ac0a642e1126f85bd57e806b0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Lac.mat": "140f3f8d4c39e4ef61f00291a747bfb718718df3084bf2584c65128c92c36eda",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Lys.mat": "5dfab1d126d28ac52f26017edbb2ab115f24da2b31c9fe8012f783bfc71d46a1",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/MSM.mat": "656fabe675dc7f1f5ac773e8bc70b7e5cd1017192cc139dd30585509d6935745",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Mann.mat": "e4bb8aebd29397ad4a47d9a93e8fd37f5ef667e80bf118a4a97278ea0586bb11",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/NAA.mat": "e769466af6e7e5275b9edde39c2d30af0aa790beb7f03466698f9b954e6c2be6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/NAAG.mat": "7cab1e96b88ab1055526dc1fe6d08262ecf1ab19f7352d98cf1139c8e6c1d562",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/NAA_Acetly_only.mat": "eb5c505029dce9fc00e390d9243294f5a44af2d8762c0b414379da64c7a9ca37",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/NAA_Aspartate_only.mat": "f685c26176d5ef97822272a2c45db01a87d550d5ab710424738ac37546096fb0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/PB4.mat": "605f885a8281eafc9e2ac843ad9b2ac0284253f6473a972933e18186a5834d9c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/PCh.mat": "9947b075844bff7ed21253cb9ec510d70edb4cf0c40fcd6db76cd227b65ceb95",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/PCr.mat": "29c2895cff28d5889a91ba99b6bf3b779fb00456af7c0fb0a834f31d0abf8160",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/PE.mat": "f5fe34e068cd9bb4572331d37b530a50348565101b48cf3ed287e8cecf514b57",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Pgc.mat": "d27b5435e1478ed09b338d399271c56c9f561d8078de49cc10d074133d602d26",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Phenyl.mat": "8d8fe01fde5e4e269c4320b1e826dfc187f14c42e37875e8cf4c532ff494cce3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Pyr.mat": "07b474a61a673da8564e3555822137dee8310d4596a7c6f94a21666ec5ec0873",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ref0ppm.mat": "b6a5aae8d8eff889c48712aa594758f3b466e70279e2783e282e445c8de6c086",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Scyllo.mat": "be50da51e227141f342c98bb9ceb05533ec15f50d5ac7c24d75ac5233234f08d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Ser.mat": "f56c62147d566767b930243f378a9a48c94f48527cabee35bdd9cddddbacf069",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Suc.mat": "bfff3d2b327a3fe8c0b5e068da9b472300c2ea8799c7ba9382aa776fb0621fcf",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Tau.mat": "871700e199a21ea8832ef76499f45ad0c8a671819a5480030a483954db160dab",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Thr.mat": "2b32e26df8e361aedca5b90f70f158c3a03e4d1c1fe641a45e28442694983150",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Tryp.mat": "87931ec7801cc9a02e3b92433e63771edfc71f08ef092629f96040192d270493",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Tyros.mat": "a968a8bcbf39066a7007079b4dab309f11179bd6aa1977686b491ae641267b13",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/Val.mat": "c2e4a48b93ae86b22d2a194528a906717e7f67b241411cde5504dc51e603c9ce",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/bHB.mat": "d7f43cb17bce4f150720602141ba28775d9ba338e8e38203cc1f955e58a88b22",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/bHG.mat": "b0d0d51cee9affe6de26814d74dcb3fcf8189b88aaad1844513dcaf97cad248e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/iLe.mat": "5e8f8ba26680cb0d9f46d706f64399f612e0b7338f6ecc54f5d9632ad9f93a7c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/mI.mat": "453ee9a5f847291dbadc7f5236c428a4ecbed95ac0a642e1126f85bd57e806b0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/sI.mat": "be50da51e227141f342c98bb9ceb05533ec15f50d5ac7c24d75ac5233234f08d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/metabolites/spinSystems.mat": "ce6f8a0aee2cc162ca8f6a0a12452eb6cff8b2409ff24439165c2c618e3a723b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_COF.m": "6721fd1a9637d90b558ac6328ba8560705a8403d54611d85b0c0e0b5ed620d61",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_Hamiltonian.m": "75d4070db5ce0802cce4b7b44800fd1ff3fe877512e9531d9d49810b34913e10",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_MEGAsLASER_SH.m": "0e77233b0d46fdb7c9a09cf22918c8555be52fa20f5489643094609ee147101a",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_coherenceOrder.m": "5496f68c54a476cc0f8fd45adc3c935fc6e3e3973def9f8036c0f9a21d4ec0a3",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_dAdd.m": "fbda9b0b6b3644d14f6abfc435e9a527c49243fdf1729d8e44455de94aa0c226",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_dDiv.m": "e65452a492df63ac0837f203babb6d073092e5eced00f38de01e7013382c95df",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_dMul.m": "a2eefb1aeaffde950ed934ae8c462dc977e6715adeaac317895e0e26847af743",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_evolve.m": "187f7c4723cb005075bda492e33b030bb49670ad4002ef44c6fc11ac8988f9c0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_excite.m": "ebe230d067bed0c895e13109ca619403e6feb08db8097a43b68c61538fb29b62",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_excite_arbPh.m": "be0de91db50c782b9769f703e184619225b82abbf878191e6ccdc7741e0efa41",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_gradSpoil.m": "18b54b97a73630332bdf2ee7af8e5833ee7634223b7d25b2c8d35cd745d5327b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_laser.m": "d5e0836a47d4d929916ecc26a15151ebf7e21897bea28c90449524c6675d8044",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_lcmrawbasis.m": "e92ed9fcc27e2d131cbc78c692e4667e6b30a696c6a192cc4d66da20c4b91138",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_make2DSimPlot.m": "5eebdc3b3c4c5ad5240c96cb8cf0cc9b2847c22f17fc4a19b766734dec502d38",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_megapress.m": "f51ba14f2baae3c969ee6a7cddcadbbc922a8f06cc67bac9718a1ca99e077cb8",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_megapress_shaped.m": "0190b3081535045daf0408a67c9dbc1ecf686c0813e7f4ccee77ed0d4a27e296",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_megapress_shapedEdit.m": "7479d89809faf74175e67b9f51d66a321c43aef9660fc13dae96b3574ad00ad5",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_megapress_shapedRefoc.m": "5e5f6322c687ba2911574ba0d70778e141c3a861814fd3ff3f3ef7301832b59b",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_megaspecial_shaped.m": "5f0da47523f3e989898deaf35a8c8062309c734fbbde22f74a1682f938d64d67",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_onepulse.m": "0add9af55233f69488aee6770959f2d8b1b0a0a269907843090cb1bd9c7202d0",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_onepulse_arbPh.m": "202b4ae948f06226ca733feb95a3f295036ca37d868d42c6330a7a90ea6b6992",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_onepulse_delay.m": "38c6217df69c97363ab8301c7e21c6661e3fab2ad872d7c8a8f0d38dc66a0031",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_onepulse_shaped.m": "f3f118c4282f381dcaf88273be009e772338bc03f9697bdf6d91d4e8f7badd04",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_press.m": "a7afa16d20df9c28af02fe1d8f3d8827f31619d3bc8d53fed9d48fcd3307f889",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_press_shaped.m": "66a728c3680eddaf2142fca46053a1cc47e3f51f8b7799222d72b62de4babc57",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_press_shaped_phCyc.m": "ba9484e64eb75d06a7446a985242d4413c177f1d6e8c1b0f65dda2e6d718cc3c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_readout.m": "751da23e14ec5a25188fbe2c25a0d3cd9e2f9ca032abc33660d0e82e6c2acfe4",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_rotate.m": "6f5176bb816992e42e68df24cb63b8bdb28936ff0072628f59ad3262b12e72f8",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_rotate_arbPh.m": "7f157f844e9a28b9b2e28919a04b9e9b6c249884f2eeabfaab3ac4b04d6611b6",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_semiLASER_shaped_phCyc.m": "ab3ff3e49059447f6602be60df208e697b3d425e9a4b2c3dd96805e06ddf8b78",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_shapedRF.m": "1ad8f0e896f5c28a0271141ac5410cd3e0db81423f18fb4a65a361985e94d01c",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_spinecho.m": "55993736af7ba094a40a7c4e6395380e4400bbb4529d96c47648c71d5737c85d",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_spinecho_shaped.m": "8065354e01df2376aecca5ad8a9f88f151218d303eb2bd1f0c7069421c5cc72e",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_spinecho_xN.m": "1935f3d0f8146a85ab009c110f3d70c62be2c9edc785e7741a5222499e2ab0a9",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_spoil.m": "7d5e4acb7c64b9c27a6a72acff258f1ccdba655a34144fe12121d94ce4456751",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_steam.m": "79c366891cd5b526a271423d07648f543a612e727091e3754c3589126cdee559",
+    "simulation/basissets/MRSCloud-main/functions/FID-A/simulationTools/sim_steam_gradSim.m": "d9f0559afc2c87dfb4e35ed9f3fb6ab5927c4ce9bd42cfab2eb558ad08b20ce9",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/apply_propagator_edit.m": "c2f2693d0b6f499553960d0e7c5d10a45fc61dba0a005faa901a5d25b7880b39",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/apply_propagator_exc.m": "ddc82db45a61f09a16dcc268e0a82c3c4371228574afa905eeb9da04d9fe5fd1",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/apply_propagator_refoc.m": "58205683a6754e66ca3f50f7d1d6ab4d6cf8bff549cac8f1b44a10d1f1b21f78",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/calc_shapedRF_propagator_edit.m": "9deb59fb8b387f2284909a168fa59306064d4081bff456d9c8197c70cf641e03",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/calc_shapedRF_propagator_exc.m": "82fcea6a5afc7a60ec1037ea52ccfaeebfefc21e93b4d244c85fdf3b83e995e2",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/calc_shapedRF_propagator_refoc.m": "346af6a1ae4986c2cba21fd976cd2de2631ca0b7818a1a88b9f8994c5c005aa2",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/sim_Hamiltonian_mgs.m": "101cdb4ed7e1aedc7ea357050f903f4a1c71773ba0599384ca6a1dddef0325b3",
+    "simulation/basissets/MRSCloud-main/functions/experim_funct/sim_apply_pfilter.m": "ae70a2d8ff238287c3a23b26dde6a7b21599b36722e3f169276e2cc449aba8e9",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/Contents.m": "a8e4adc63c4d7a05818a568b7fdab4b6d972cef9fe31e982e432ebfdf6c8a9a7",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/base64decode.m": "d71bf5b398db931611f96d136daceac17ffb14209ec8b07cf421af5c48a1e4ae",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/base64encode.m": "dbf47456105f8332bd2b0b540a2f2e96dbc3188808d637b5d3a996065afaed6a",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/decodevarname.m": "424e5196131ed3fe2baead91097c08b88485c83ad9cab33cb0a4eeeff8b9307f",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/encodevarname.m": "b9e1735da65d49c0ce2cff70317e6575c0f053ee6c3973079367ac91c7775cd5",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/examples/demo_jsonlab_basic.m": "05820f2990a13b17a6d7e9543ddd606a2dcd6f53aabb97a95446cca76492d4ff",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/examples/demo_msgpack_basic.m": "42134833988dee1ab3ec2ff8545e27cab69931f0858a756c8e1b9b85f83e7115",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/examples/demo_ubjson_basic.m": "279b233b44e0a25e69a315b4329bea8371ea9f4aa61a5566e36bc101dadafb34",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/examples/jsonlab_selftest.m": "294caa5d4c3e9f066312706e092e45c03e64af4554c8d471a7b442be699e9430",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/examples/jsonlab_speedtest.m": "edc0637fc3d9de0bded7c6254a7980a3f17f50cbe6d5b4dfad107216a70e1cae",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/fast_match_bracket.m": "b0a6058824f84ede098f8637b25cbf8cd95797bacda92b4befedd90406c894bc",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/gzipdecode.m": "586025b3ed4e3cf2128043bb822e412712e71216789447beff136e03eec7a0ab",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/gzipencode.m": "bac500fe4953bb1bdad3be7fbbdf14afdb288a5de4942d1c4b6a89706fceb12d",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/isoctavemesh.m": "9487876f3cd825c9a0db4ee2d8cc1c60451df9922c63a810fa678707a773896e",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/jdatadecode.m": "cf3ea036aad8b1b1cc5ea850999b94b3c770dfd17d1f40f1fcb3005c8d57ac34",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/jdataencode.m": "7932bad30ce26cfb9699f0cda688f2ad7745a7013b2146a62a5859d8798b0cc3",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/jload.m": "51118db31e6eddb9b54c335a1f8f8c9cae471ae55caef1f804350c6595d54b81",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/jsave.m": "7d404a0f7fa14cb6dfe51cda84dae46450b36c959f49b172308a8786b7f8a680",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/jsonopt.m": "b762c8d0b8563609fc803501ab8a6c5881e6fc630ba1f4289a17238331455cb4",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/loadbj.m": "22fa9afa4bec7b156af01eaa63dcdcba99b2b87ded761a46953e66eb43b38213",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/loadjson.m": "1ae93f17dd92143d6b4c4eba10c632208ff0592e29fdfaed2800b2fb5fd8fabe",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/loadmsgpack.m": "7475b1139674f4fb26e8c946dc115df6d5e6e23a3cf5b0321b3689584e9e6e2b",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/loadubjson.m": "7fd49f0edcb9fdae1b912fc3aae72f7fe56f3f75ba8e2d55fc48d44ae0880bdc",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lz4decode.m": "9055881913d9a2e2159cd756b229a35ae1ec7865b2e32b913452ea954a1b929a",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lz4encode.m": "237d243de569051ae93b2ff66639ff8a3a0bdcc8aad6b1b7fcbf885841bf3f77",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lz4hcdecode.m": "cf6fe8c01be35a0142986e480b6bea1570caf1997d427f5be1e61962e2b97d6f",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lz4hcencode.m": "ffdedee9818f73a859c0782615658f5a597c9fdae44ecd0f9c280652472ebd62",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lzipdecode.m": "bbfe32f7282d0b7d2692fd0ea44699d6c153ca857f2f55f0cb3989d322651b3a",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lzipencode.m": "12ac2f763bf234082939adfc71f27b45cec74a78879f5a68d10782ffa8e0e838",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lzmadecode.m": "b2beca76d21ccc2903593c97e0d1e4940df9b151cbe8b34db89c48b270e59b02",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/lzmaencode.m": "4feb72fa03385cb2478d0c77d8741faa1fe8e9c594e416566214f3f62177991c",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/match_bracket.m": "f8dad6e2d8acb1291342633f06a0720c8579dd8ebdb7c5bf6dc78360453e9a39",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/mergestruct.m": "09b64ea605d4f5efa5e7dd2d2badedb127826f974485d4fe3f4b08de53a9331d",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/nestbracket2dim.m": "c1f7965dd295ef7fdd3863fe57c0915ce9779267c2724adc6acd410bcd57eaeb",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/savebj.m": "3a808fd185ab0c59f735d968e80e5555f78d97fda96d6afb9aacf924921e79a7",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/savejson.m": "b5a9800290290d3e144301dfcb0ed1772b25c0fb05e4255651ddf5f4666b6fe1",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/savemsgpack.m": "e4ded1dfba422b578bf6241685d17907699de0e6a048f0b019bc31d7376e14bc",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/saveubjson.m": "39c7d027795e6628b198b1562168b9859b8409d8518ac461dc4fe663f5092a70",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/test/run_jsonlab_test.m": "24019ba53885202a6a7e9e7130ce6387ffba4b82ea3bd5bc57a35025353d8928",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/test/test_jsonlab.m": "b21aface914bcfcbd5efd54ae4c81fa81bc426de2208dd760813a90bb7d58c43",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/varargin2struct.m": "b9fbadaf84cc363a336f65a59c9a401dcf82f5c6eec18cb8f8bd644e941cab77",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/zlibdecode.m": "55948dfd5587aa5d468335cdf2091a23e9af860e7c3844d0aa7fa411be36bcfc",
+    "simulation/basissets/MRSCloud-main/functions/jsonlab-2.0/jsonlab-2.0/zlibencode.m": "3105cb038ef75a79dd32af415e432f44f69346a4d941a97cd7336c83a2609c7a",
+    "simulation/basissets/MRSCloud-main/functions/load_parameters.m": "b44b20742f84e9034ff2e729a7d5c7005b278d1211390dc0f5d815fb7c41898c",
+    "simulation/basissets/MRSCloud-main/functions/load_parameters_1_5T.m": "d27562fdc97a0d5d1413338e8d137778acfae9ded5f5673e9303fb1d736edf5f",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_createMetabList.m": "02b360fbdddf6e25444cbd5bb8f6f6b24e949c5c9eeb2780cad5b5b6336e17b3",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_makeBasis_MRSCloud.m": "99e8d570325ffafa90454eff34a779ffc38a9cebbe9aa2c233892fc7211c9ac2",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_makeBasis_Osprey.m": "219a6bcf72bcc8ce677e7b26d36917fa95e1fa2faea2bf27cf93fe8f873a5978",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_makeBasis_backup.m": "bbfc8fdb04609a30c002927259c9c756cc33bfe5a9268b15f9158ae6ed927584",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_plotBasis.m": "845fef312371bb6ff372585fbb6dbdffcba84d55f7a6cdd2713cc0997c6c1a03",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/fit_selectMetabs.m": "7ff4eda8ba955e62e17529b298d2f9c77166ae4cced6835d4b1505b835aa8957",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/io_writelcmBASIS(old).m": "eb9a6b7338ce5baca0b509840c3d01384b4483758d16c1ae2048f5bab7e22d41",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/io_writelcmBASIS.m": "ee5e6e53ef3ff2f666995a29d144934e191e6fa922c4b54fc9d7789d53b8faa5",
+    "simulation/basissets/MRSCloud-main/functions/osprey_functions/op_gaussianPeak.m": "9bd5f604e18050ebfc03a55b895a4d71813325204936aa02aee925ea57518c18",
+    "simulation/basissets/MRSCloud-main/functions/sim_signals.m": "3ea6d9a18a0991183a483f5315fedae5397e74f5ab9463da303d985ab6595bd9",
+    "simulation/basissets/MRSCloud-main/functions/sim_signals_GE_sLASER_HERMES.m": "f07973ee15d80fdfc6aafac50178f05e7b27ed08caa42cc18004f46c6aed4e14",
+    "simulation/basissets/MRSCloud-main/functions/sim_signals_MRSI.m": "e2f36a9b35aca0ec10426055a782c38c833812a58218d982285cbea944f4c4cb",
+    "simulation/basissets/MRSCloud-main/functions/sim_signals_STEAM.m": "c89efa3f689a57c1e8ad1461e14b33ecdb8bdfe9af278338f200f2647d16faf7",
+    "simulation/basissets/MRSCloud-main/functions/sim_signals_sLASER.m": "c4c005d6a34b8a595078c902b8932e22a1c7268423aea6b5ec293409b9065fa0",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Philips_univ_3_67_1_9_20ms.pta": "a4a997ac49b36d234bc06e5d4fe87f4a154e853ce9b34aebd4e4b53a5ad6e0f7",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Philips_univ_3_67_4_56_20ms.pta": "fe909349c56922ec74fdf8a911a9a935c243cffc8e3a4546a92bd3a0536c40be",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Philips_univ_4_56_1_9_20ms.pta": "3a9c9077e1cf126406afd8b46579d6ee37c9db6b0c7dfc50638f431b3933ab77",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Philips_univ_4_68_1_9_20ms.pta": "db3875324b43f047f22055bb5664eb5aac4ca3606c5de1595931bd3ee11a4d55",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Siemens_univ_3_67_1_9_20ms.pta": "b303803efcb4281414ba99e949c4c3dc26b2d5dbdeb90d82951968c9d5d380ed",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Siemens_univ_3_67_4_56_20ms.pta": "221a64a9aa417a8a61874d97cbc1570aba9f9aec60f4bf9b115f879041910b3a",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Siemens_univ_4_56_1_9_20ms.pta": "97c03832df145b54ae87a28476807b0552b48d579f57d55d66dc255583e094fc",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Siemens_univ_4_68_1_9_20ms.pta": "b8e08bb8b8174004abe405544d524aa877cf2a79ce8d8597abd59a151d9cf2b8",
+    "simulation/basissets/MRSCloud-main/pulses_universal/dl_Univ_4_68_1_9_20ms.pta": "2fe5d735e7d3f716c6a4dd11cab5a4eff9a66dde0613bd2bba3b22752c463081",
+    "simulation/basissets/MRSCloud-main/pulses_universal/sl_univ_pulse.pta": "aebc9ef6c7163d2d8b82ef974041d8d9355b9045e20f5fff988d8f0339bf6f5c",
+    "simulation/basissets/MRSCloud-main/pulses_universal/univ_eddenrefo.pta": "9a3698e18c958803ffce2e67a5545f3bdbd3be5742bfb6e10e16f492886e879b",
+    "simulation/basissets/MRSCloud-main/pulses_universal/univ_spreddenrex.pta": "1787f2c0c009d94516c6da537618c544e6155b36a5ee3c11bb096c1aab6b7983",
+    "simulation/basissets/MRSCloud-main/run/run_simulations_cloud.m": "ba816514c7588414a8d82e72740d9c6e7a342ca29597b7f07e0d4468d5e5c064"
+  },
+  "unsupported_entries": [],
+  "water_RF_carrier_ppm": 4.7,
+  "water_source_spin_system": "sysH2O"
+}
