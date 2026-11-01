@@ -11,7 +11,7 @@ from simulation.mrscloud_quantitative_noise import add_pair_noise
 def simulate_spatial(cell_labels, *, calibration_bundle, metabolite_concentrations_mM,
                      water_concentrations_mol_l, b0_offsets_hz=None, spatial_weights=None,
                      cell_volumes_mm3=None, relaxation=None, receiver_factor=1.,
-                     bandwidth_hz=2000, points=2048, expected_calibration=None, noise=None):
+                     bandwidth_hz=2000, points=2048, expected_calibration=None, noise=None, _response_loader=None):
     """Integrate a selected 1D cell list or 3D ROI, in C-order.
 
     Labels are explicit WM/GM/CSF names. Weights must already sum to one;
@@ -48,9 +48,10 @@ def simulate_spatial(cell_labels, *, calibration_bundle, metabolite_concentratio
         metabolite_concentrations_mM=metabolite_concentrations_mM,
         water_concentrations_mol_l=water_concentrations_mol_l,relaxation=relaxation,
         receiver_factor=receiver_factor,bandwidth_hz=bandwidth_hz,points=points,
-        expected_calibration=expected_calibration)
+        expected_calibration=expected_calibration,_response_loader=_response_loader)
     names=list(pair['components'])
-    responses,water,_=load_library(calibration_bundle,selected_names=names,
+    loader=load_library if _response_loader is None else _response_loader
+    responses,water,_=loader(calibration_bundle,selected_names=names,
         bandwidth_hz=bandwidth_hz,points=points,expected_calibration=pair['simulation_config']['synthetic_calibration'])
     gt=pair['ground_truth'];config=pair['simulation_config'];time=pair['time_s']
     envelopes={t:np.zeros(points,complex) for t in TISSUES}

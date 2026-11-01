@@ -13,7 +13,7 @@ TISSUES=('WM','GM','CSF')
 
 def simulate_voxel(tissue_fractions, *, calibration_bundle, metabolite_concentrations_mM,
                    water_concentrations_mol_l, receiver_factor=1., normalize_fractions=False,
-                   bandwidth_hz=2000, points=2048, expected_calibration=None, relaxation=None, noise=None):
+                   bandwidth_hz=2000, points=2048, expected_calibration=None, relaxation=None, noise=None, _response_loader=None):
     """Mix explicit tissue concentrations; fractions are volume fractions.
 
     Tissue profiles must specify all three tissues and identical metabolite
@@ -49,7 +49,7 @@ def simulate_voxel(tissue_fractions, *, calibration_bundle, metabolite_concentra
         fractions[t]*water[t]*relax['water_factors'][t] for t in TISSUES)
     pair=synthesize(calibration_bundle,signal_average,water_concentration_mol_l=signal_water,
         receiver_factor=receiver_factor,bandwidth_hz=bandwidth_hz,points=points,
-        expected_calibration=expected_calibration)
+        expected_calibration=expected_calibration,_response_loader=_response_loader)
     parenchyma=fractions['WM']+fractions['GM']
     tissue_only={m:sum(fractions[t]*concentrations[t][m] for t in ['WM','GM'])/parenchyma
                  if parenchyma>0 else None for m in names}

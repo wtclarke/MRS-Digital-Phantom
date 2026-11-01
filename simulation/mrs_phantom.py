@@ -31,7 +31,7 @@ class DigitalPhantom:
         self.gui = gui
         self.verbose = verbose
         self.simulation_mode = simulation_params.get('simulation_mode', 'legacy')
-        if self.simulation_mode not in ('legacy', 'sequence_matched_quantitative'):
+        if self.simulation_mode not in ('legacy', 'sequence_matched_quantitative', 'basis_h2o'):
             raise ValueError(f'Unknown simulation_mode: {self.simulation_mode}')
 
         self._log("📥 Initializing Digital Phantom...")
@@ -42,9 +42,12 @@ class DigitalPhantom:
         self.spacing = self.subject.spacing
         self.affine = self.subject['labels'].affine
 
-        if self.simulation_mode == 'sequence_matched_quantitative':
+        if self.simulation_mode in ('sequence_matched_quantitative','basis_h2o'):
             from copy import deepcopy
-            from simulation.quantitative import validate_config
+            if self.simulation_mode=='basis_h2o':
+                from simulation.basis_h2o import validate_config
+            else:
+                from simulation.quantitative import validate_config
             if {'tissue_fractions', 'spatial'} & set(simulation_params['quantitative']):
                 raise ValueError('DigitalPhantom quantitative mode uses anatomical ROIs; use headless fractions/cells separately')
             validate_config(simulation_params['quantitative'])
@@ -84,7 +87,8 @@ class DigitalPhantom:
             TE=self.simulation_params.get('TE'),
             vendor=self.simulation_params.get('vendor'),
             localization=self.simulation_params.get('localization'),
-            metabs=self.metabs
+            metabs=self.metabs,
+            water_reference=self.simulation_params.get('_basis_water_reference')
         )
 
         self.signal_model = SignalModel(
@@ -152,6 +156,9 @@ class DigitalPhantom:
             tuple: Legacy spectrum, components, time, ppm and labels. Explicit
                 sequence_matched_quantitative mode returns a paired-FID dictionary.
         """
+        if getattr(self, 'simulation_mode', 'legacy') == 'basis_h2o':
+            from simulation.basis_h2o import simulate_basis_h2o
+            return simulate_basis_h2o(self.quantitative_config,phantom=self,voi_bounds=voi_coords)
         if getattr(self, 'simulation_mode', 'legacy') == 'sequence_matched_quantitative':
             from simulation.quantitative import simulate_quantitative
             return simulate_quantitative(self.quantitative_config, phantom=self, voi_bounds=voi_coords)
@@ -214,7 +221,7 @@ class DigitalPhantom:
         Args:
             simulation_params (dict): Updated simulation parameters.
         """
-        if getattr(self, 'simulation_mode', 'legacy') == 'sequence_matched_quantitative':
+        if getattr(self, 'simulation_mode', 'legacy') in ('sequence_matched_quantitative','basis_h2o'):
             raise ValueError('Create a new quantitative configuration; legacy GUI updates do not apply to this mode')
         old_value = getattr(self, 'simulation_params', {}).get('lipid_sigma')
         new_value = simulation_params.get('lipid_sigma')

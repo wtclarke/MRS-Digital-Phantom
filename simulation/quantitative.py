@@ -23,14 +23,13 @@ KEYS={'calibration_bundle','metabolite_concentrations_mM','water_concentrations_
       'expected_calibration_identity','concentration_convention'}
 
 
-def validate_config(config):
-    """Validate the family/grid and actual source hashes, never subset-normalize."""
+def _validate_common_config(config):
+    """Shared units, profiles and acquisition controls; no calibration-family decision."""
     if not isinstance(config,dict) or set(config)-KEYS:
         raise ValueError(f'unknown quantitative configuration keys: {set(config)-KEYS if isinstance(config,dict) else config}')
     cfg=deepcopy(config)
     if 'metabolite_concentrations_mM' not in cfg:
         raise ValueError('quantitative mode requires explicit tissue metabolite_concentrations_mM')
-    cfg['calibration_bundle']=str(calibration_bundle(cfg.get('calibration_bundle')))
     profiles=cfg['metabolite_concentrations_mM']
     if not isinstance(profiles,dict) or set(profiles)!={'WM','GM','CSF'} or any(not isinstance(v,dict) or not v for v in profiles.values()):
         raise ValueError('explicit nonempty WM, GM and CSF metabolite profiles are required')
@@ -43,6 +42,23 @@ def validate_config(config):
         raise ValueError('only nominal concentrations per total tissue volume are supported')
     if sum(k in cfg for k in ['tissue_fractions','spatial','phantom_spatial'])>1:
         raise ValueError('choose tissue_fractions, spatial cells or phantom_spatial, not a mixture')
+    linewidth=cfg.get('additional_linewidth_hz',{'metabolites':0.,'water':0.})
+    if not isinstance(linewidth,dict) or set(linewidth)!={'metabolites','water'}:
+        raise ValueError('additional_linewidth_hz requires metabolites and water in Hz')
+    if any(isinstance(v,bool) for v in linewidth.values()):raise ValueError('linewidths require numeric Hz, not booleans')
+    try:linewidth={k:float(v) for k,v in linewidth.items()}
+    except (TypeError,ValueError) as error:raise ValueError('linewidths require numeric Hz') from error
+    if any(not np.isfinite(v) or v<0 for v in linewidth.values()):
+        raise ValueError('additional linewidths must be finite and nonnegative Hz')
+    cfg['additional_linewidth_hz']={k:float(v) for k,v in linewidth.items()}
+    cfg.setdefault('water_concentrations_mol_l',deepcopy(DEFAULT_WATER))
+    return cfg
+
+
+def validate_config(config):
+    """Validate the frozen sequence family and its construction-source hashes."""
+    cfg=_validate_common_config(config)
+    cfg['calibration_bundle']=str(calibration_bundle(cfg.get('calibration_bundle')))
     bw=cfg.get('bandwidth_hz',2000);points=cfg.get('points',2048)
     if isinstance(points,bool) or not isinstance(points,int) or points!=2048 or bw!=2000:
         raise ValueError('production calibration requires 2048 complex points at 2000 Hz')
@@ -56,25 +72,21 @@ def validate_config(config):
     if meta['calibration_identity']!=CALIBRATION_ID or cfg.get('expected_calibration_identity',CALIBRATION_ID)!=meta['calibration_identity']:
         raise ValueError('expected calibration identity mismatch')
     verify_source_provenance(cfg['calibration_bundle'],meta['normalization'])
-    linewidth=cfg.get('additional_linewidth_hz',{'metabolites':0.,'water':0.})
-    if not isinstance(linewidth,dict) or set(linewidth)!={'metabolites','water'}:
-        raise ValueError('additional_linewidth_hz requires metabolites and water in Hz')
-    if any(isinstance(v,bool) for v in linewidth.values()):raise ValueError('linewidths require numeric Hz, not booleans')
-    try:linewidth={k:float(v) for k,v in linewidth.items()}
-    except (TypeError,ValueError) as error:raise ValueError('linewidths require numeric Hz') from error
-    if any(not np.isfinite(v) or v<0 for v in linewidth.values()):
-        raise ValueError('additional linewidths must be finite and nonnegative Hz')
-    cfg['additional_linewidth_hz']={k:float(v) for k,v in linewidth.items()}
-    cfg.setdefault('water_concentrations_mol_l',deepcopy(DEFAULT_WATER))
     return cfg,meta
 
 
 def simulate_quantitative(config, *, phantom=None, voi_bounds=None):
     """Return paired complex FIDs; no legacy signal generation is called."""
     cfg,calibration=validate_config(config)
+    return _simulate_with_config(config,cfg,calibration,phantom=phantom,voi_bounds=voi_bounds)
+
+
+def _simulate_with_config(config,cfg,calibration, *, phantom=None,voi_bounds=None,
+                          response_loader=None,simulation_mode=MODE):
     kwargs={k:cfg[k] for k in ['calibration_bundle','metabolite_concentrations_mM','water_concentrations_mol_l',
                              'receiver_factor','bandwidth_hz','points','relaxation'] if k in cfg}
     kwargs['expected_calibration']=calibration
+    if response_loader is not None:kwargs['_response_loader']=response_loader
     if phantom is not None:
         if 'tissue_fractions' in cfg or 'spatial' in cfg:
             raise ValueError('phantom ROIs cannot also specify fractions or inline cells')
@@ -131,7 +143,7 @@ def simulate_quantitative(config, *, phantom=None, voi_bounds=None):
         pair['components']={m:fid*envelope for m,fid in pair['components'].items()}
         pair['metabolite_fid']=sum(pair['components'].values())
     if line['water']:pair['water_reference_fid']=pair['water_reference_fid']*np.exp(-np.pi*line['water']*t)
-    pair['simulation_config'].update(simulation_mode=MODE,production_quantitative=True,
+    pair['simulation_config'].update(simulation_mode=simulation_mode,production_quantitative=True,
         water_concentration_source='explicit mol/L override' if 'water_concentrations_mol_l' in config else 'H2O_CONCENTRATIONS validated tissue-volume defaults',
         additional_linewidth_hz=line,linewidth_convention='additional Lorentzian exp(-pi*Hz*t); frozen readout retained; observed FWHM not inferred',
         voxel_affine_mm=affine.tolist(),geometry_scope=geometry_scope,
@@ -140,7 +152,7 @@ def simulate_quantitative(config, *, phantom=None, voi_bounds=None):
         water_reference_kind='separate raw pre-DC sequence-matched unsuppressed acquisition',
         residual_water_contamination=False)
     truth=pair['ground_truth']
-    truth.setdefault('relaxation',{'mode':'none','TE_s':.030,'TR_s':None,'application':'pre_acquisition_amplitude_only',
+    truth.setdefault('relaxation',{'mode':'none','TE_s':calibration['sequence']['TE_ms']/1000,'TR_s':None,'application':'pre_acquisition_amplitude_only',
         'times_unit':'s','water_factors':dict.fromkeys(DEFAULT_WATER,1.),
         'metabolite_factors':{t:dict.fromkeys(pair['components'],1.) for t in DEFAULT_WATER}})
     truth.setdefault('relaxation_weighted_metabolite_concentrations_mM',dict(truth['voxel_average_metabolite_concentrations_mM']))
@@ -171,15 +183,18 @@ def export_quantitative(pair,output_dir):
     return paths
 
 
-def simulate_quantitative_batch(positions,settings,*,phantom=None,save_dir=None):
+def simulate_quantitative_batch(positions,settings,*,phantom=None,save_dir=None,
+                                _simulate=None,_validate=None,_mode=MODE):
     from simulation.headless import _position_and_bounds
     allowed={'simulation_mode','quantitative','positions','voxel_size_mm','skeleton','output_dir'}
     if set(settings)-allowed:raise ValueError('legacy or unknown settings supplied to quantitative mode')
-    config=settings['quantitative'];validate_config(config)
+    simulate=simulate_quantitative if _simulate is None else _simulate
+    validate=validate_config if _validate is None else _validate
+    config=settings['quantitative'];validate(config)
     if phantom is None and not {'tissue_fractions','spatial'}&set(config):
         from simulation.mrs_phantom import DigitalPhantom
         if 'skeleton' not in settings:raise ValueError('anatomical mode requires a skeleton or supplied phantom')
-        phantom=DigitalPhantom(settings['skeleton'],None,None,{'simulation_mode':MODE,'quantitative':config},verbose=False)
+        phantom=DigitalPhantom(settings['skeleton'],None,None,{'simulation_mode':_mode,'quantitative':config},verbose=False)
     positions=list(positions);bounds=[]
     if not positions and save_dir is not None:raise ValueError('at least one quantitative voxel is required when saving')
     if phantom is None and ('skeleton' in settings or 'voxel_size_mm' in settings):
@@ -202,7 +217,7 @@ def simulate_quantitative_batch(positions,settings,*,phantom=None,save_dir=None)
         voxel_config=deepcopy(config)
         if voxel_config.get('noise') is not None:
             voxel_config['noise']['seed']+=i
-        pair=simulate_quantitative(voxel_config,phantom=phantom,voi_bounds=roi if phantom is not None else None)
+        pair=simulate(voxel_config,phantom=phantom,voi_bounds=roi if phantom is not None else None)
         pair['position']=position
         pair['simulation_config']['batch']={'index':i,'position_index':list(position),
             'noise_seed_policy':'configured root seed + voxel index; separate metabolite/water child streams'}

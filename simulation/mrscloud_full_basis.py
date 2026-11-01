@@ -103,10 +103,11 @@ def load_library(directory, *, bandwidth_hz=2000, points=2048, selected_names=No
 
 
 def synthesize(directory, concentrations_mM, *, water_concentration_mol_l=40., receiver_factor=1.,
-               bandwidth_hz=2000, points=2048, expected_calibration=None):
+               bandwidth_hz=2000, points=2048, expected_calibration=None, _response_loader=None):
     if {'H2O','Ref0ppm'} & set(concentrations_mM):
         raise ValueError('reference controls are not metabolite concentrations; water is supplied separately')
-    responses,water,metadata=load_library(directory,bandwidth_hz=bandwidth_hz,points=points,
+    loader=load_library if _response_loader is None else _response_loader
+    responses,water,metadata=loader(directory,bandwidth_hz=bandwidth_hz,points=points,
         selected_names=list(concentrations_mM),expected_calibration=expected_calibration)
     components,water_signal=concentration_signals(responses,water,
         concentrations_mol_l={k:float(v)*.001 for k,v in concentrations_mM.items()},
@@ -118,6 +119,6 @@ def synthesize(directory, concentrations_mM, *, water_concentration_mol_l=40., r
             'concentration_convention':'nominal concentration per total tissue volume','physical_calibration':False},
         'simulation_config':{'synthetic_calibration':metadata,'receiver_factor':float(receiver_factor),
             'points':points,'bandwidth_hz':bandwidth_hz,'dwell_time_s':1/bandwidth_hz,
-            'frequency_origin_ppm':4.68,'spectrometer_frequency_mhz':cfg['spectrometer_frequency_mhz'],
-            'water_frequency_offset_hz':(4.7-4.68)*cfg['spectrometer_frequency_mhz'],
-            'water_phase_rad':0.,'residual_water':False,'physical_calibration':False}}
+            'frequency_origin_ppm':cfg['frequency_origin_ppm'],'spectrometer_frequency_mhz':cfg['spectrometer_frequency_mhz'],
+            'water_frequency_offset_hz':cfg.get('water_frequency_offset_hz',(4.7-4.68)*cfg['spectrometer_frequency_mhz']),
+            'water_phase_rad':cfg.get('water_phase_rad',0.),'residual_water':False,'physical_calibration':False}}

@@ -38,10 +38,11 @@ class Basis():
     #*************************#
     #   initialize instance   #
     #*************************#
-    def __init__(self, path2basis, metab_df=None, bw=None, points=None, metabs=[], vendor=None, localization=None, TE=None):
+    def __init__(self, path2basis, metab_df=None, bw=None, points=None, metabs=[], vendor=None, localization=None, TE=None, water_reference=None):
         """
         Main initialization for the Basis class.
         """
+        self.water_reference = water_reference
         self.path2basis = path2basis
         self.metab_df = metab_df
         self.bw = bw
@@ -61,6 +62,7 @@ class Basis():
         
         # Rename metabolites
         basis = self.rename_metabolites(basis)
+        if self.water_reference is not None and len(set(basis.names))!=len(basis.names):raise ValueError('ambiguous metabolite aliases')
         
         # Define metabolites to ignore
         ignore = self.define_ignore(basis, self.metabs, self.metab_df)
@@ -77,6 +79,7 @@ class Basis():
         # Extract water FID and ref0ppm (if present)
         if 'H2O' in basis.names:
             water_idx = basis.names.index('H2O')
+            if self.water_reference is not None:self.water_fid = basis.original_basis_array[:,water_idx].copy()
             # self.water_fid = basis.original_basis_array[:, water_idx]
             # Remove water from the basis set
             basis.remove_fid_from_basis('H2O')
@@ -131,7 +134,7 @@ class Basis():
         Reformat the basis set to a given bandwidth and number of points.
         """
         basis._raw_fids = basis.get_formatted_basis(bw, points, ignore=ignore)
-        basis._raw_fids /= np.mean(np.abs(basis._raw_fids))
+        basis._raw_fids /= (np.mean(np.abs(basis._raw_fids)) if self.water_reference is None else self.water_reference['normalization']['scalar'])
         basis._dt = 1. / bw
         basis._names = basis.get_formatted_names(ignore=ignore)
         return basis

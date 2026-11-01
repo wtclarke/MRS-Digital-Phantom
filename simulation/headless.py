@@ -59,6 +59,16 @@ def simulate_batch(
     Opt-in sequence_matched_quantitative settings instead return paired FIDs;
     see simulation.quantitative for explicit tissue, relaxation, B0 and noise units.
     """
+    water_mode = settings.get("water_reference_mode")
+    legacy_water = water_mode == "basis_h2o" and "simulation_params" in settings
+    if legacy_water and "quantitative" in settings:raise ValueError("Do not mix legacy and quantitative settings")
+    if water_mode == "basis_h2o" and not legacy_water:
+        if total_components is not None or individual_components or seed is not None:
+            raise ValueError("basis_h2o uses paired acquisitions and explicit quantitative.noise settings")
+        from simulation.basis_h2o import simulate_batch as simulate_basis_batch
+        return simulate_basis_batch(positions,settings,phantom=phantom,save_dir=save_dir)
+    if water_mode is not None and not legacy_water:
+        raise ValueError(f"Unknown water_reference_mode: {water_mode}")
     mode = settings.get("simulation_mode", "legacy")
     if mode == "sequence_matched_quantitative":
         if total_components is not None or individual_components or seed is not None:
@@ -110,10 +120,15 @@ def simulate_batch(
         if os.path.exists(save_dir) and not os.path.isdir(save_dir):
             raise NotADirectoryError(f"NIfTI output path is not a directory: {save_dir}")
 
+    water_metadata = None
+    if legacy_water:
+        from simulation.legacy_water_reference import prepare
+        water_metadata = prepare(settings)
     simulation_params = {**simulation_settings, **basis_settings}
+    if legacy_water:simulation_params['_basis_water_reference'] = water_metadata
     phantom = DigitalPhantom(
         skeleton="MRiLab",
-        path2metabs=DEFAULT_METAB_DF_PATH,
+        path2metabs=settings.get("path2metabs",DEFAULT_METAB_DF_PATH),
         path2basis=basis_path,
         simulation_params=simulation_params,
         metabs=[],
@@ -147,7 +162,7 @@ def simulate_batch(
     try:
         results = []
         for index, (position, bounds) in enumerate(position_bounds):
-            spectrum, components, time_axis, ppm_axis, _ = phantom.simulate_data(bounds)
+            spectrum, components, time_axis, ppm_axis, voi_labels = phantom.simulate_data(bounds)
             model = phantom.signal_model
             ground_truth = {
                 "sampled_per_tissue": model.sampled_concs_per_tissue,
@@ -156,7 +171,7 @@ def simulate_batch(
             }
             sim_params = {
                 "skeleton": "MRiLab",
-                "path2metabs": DEFAULT_METAB_DF_PATH,
+                "path2metabs": settings.get("path2metabs",DEFAULT_METAB_DF_PATH),
                 "path2basis": basis_path,
                 "metabs": phantom.metabs,
                 "basis_set_settings": basis_settings,
@@ -186,6 +201,20 @@ def simulate_batch(
                 "nifti_metadata": nifti_metadata,
             }
 
+            if legacy_water:
+                from simulation.legacy_water_reference import generate
+                result.update(generate(model,voi_labels,water_metadata,seed,index))
+                nifti_metadata['frequency_origin_ppm']=water_metadata['frequency_origin_ppm']
+                result['ppm_axis']=water_metadata['frequency_origin_ppm']+np.fft.fftshift(np.fft.fftfreq(phantom.basis_set.n,phantom.basis_set.dwelltime))/phantom.basis_set.cf
+                fractions=ground_truth['tissue_fractions']
+                parenchyma=fractions.get('WM',0)+fractions.get('GM',0)
+                ground_truth['nominal_voxel_average_metabolite_concentrations_mM']=dict(ground_truth['voxel_weighted'])
+                ground_truth['nominal_tissue_only_metabolite_concentrations_mM']={m:sum(fractions.get(t,0)*ground_truth['sampled_per_tissue'].get(t,{}).get(m,0) for t in ['WM','GM'])/parenchyma if parenchyma else None for m in ground_truth['voxel_weighted']}
+                ground_truth['water_reference'] = {
+                    'nominal_water_concentration_mol_l':sum(ground_truth['tissue_fractions'].get(t,0)*c for t,c in water_metadata['water_options']['water_concentrations_mol_l'].items()),
+                    'concentration_convention':'assume_table_values_nominal_mM',
+                    'water_factors':water_metadata['water_factors']}
+
             if save_dir is not None:
                 base_name = output_names[index]
                 output_path = os.path.join(save_dir, base_name)
@@ -204,6 +233,9 @@ def simulate_batch(
                     tissue_fractions=ground_truth["tissue_fractions"],
                 )
                 result["saved_path"] = output_path
+                if legacy_water:
+                    from simulation.legacy_water_reference import export_reference
+                    export_reference(result,output_path)
 
             results.append(result)
         return results
@@ -230,6 +262,7 @@ def _as_nifti_mrs(spectrum, metadata):
     nifti.add_hdr_field("EchoTime", sim_params["basis_set_settings"]["TE"] * 1e-3)
     nifti.add_hdr_field("RepetitionTime", sim_params["simulation_params"]["TR"] * 1e-3)
     nifti.add_hdr_field("Manufacturer", sim_params["basis_set_settings"]["vendor"])
+    if "frequency_origin_ppm" in metadata:nifti.add_hdr_field("SpecFreqChemShift",metadata["frequency_origin_ppm"])
     return nifti
 
 
@@ -249,7 +282,7 @@ def results_to_nifti_mrs(
     if not results:
         return []
 
-    if any(result.get("simulation_config", {}).get("simulation_mode") == "sequence_matched_quantitative" for result in results):
+    if any(result.get("simulation_config", {}).get("simulation_mode") in ("sequence_matched_quantitative", "basis_h2o") for result in results):
         raise ValueError("Use simulation.quantitative.export_quantitative for paired quantitative FIDs.")
 
     component_names = list(results[0]["components"])
@@ -315,12 +348,19 @@ def results_to_nifti_mrs(
                 tissue_fractions=ground_truth.get("tissue_fractions"),
             )
 
+        reference_object = None
+        if "water_reference_fid" in result:
+            from simulation.legacy_water_reference import export_reference
+            reference_object = export_reference(result,voxel_dir if output_dir is not None else None)
+            if output_dir is not None:saved_paths["water_reference"] = os.path.join(voxel_dir,"water_reference.nii.gz")
+
         converted.append({
             "position": result["position"],
             "total": total_object,
             "components": component_objects,
             "saved_paths": saved_paths,
         })
+        if reference_object is not None:converted[-1]["water_reference"] = reference_object
     return converted
 
 
