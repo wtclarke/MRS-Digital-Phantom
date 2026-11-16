@@ -160,3 +160,68 @@ Limitations: the supplied directory contains no actual output.RAW, water.RAW,
 NIfTI-MRS acquisitions, or machine-readable LCModel TABLE/PRINT/COORD files. The
 observed PDF/metadata pattern is explained and the synthesis defect is reproduced,
 but exact original fit replay and post-fix concentration recovery remain unverified.
+
+## Name-keyed correction implemented
+
+Legacy Basis now exposes `responses_by_name`; `names` and `fids` are derived
+compatibility views, rebuilt on reset. Synthesis samples in existing CSV order,
+then builds named concentration/T2 records and assembles all numerical vectors
+from the same name sequence. Duplicate tissue/metabolite records and basis alias
+collisions are rejected. Missing records contribute zero, with explicit metadata.
+New exports record `metabolite_mapping.version = name-keyed-v1`. Historical
+acquisitions are not repaired or overwritten. The old minimal diagnostic artifacts
+remain evidence; running the diagnostic now verifies corrected production weights.
+
+Regression coverage includes shuffled CSV rows with distinct T2 values, reversed
+BASIS order, appended bHG, missing records, duplicate rejection before RNG draws,
+fixed-seed CSV-order sample preservation, reset/alias handling and complex exports.
+The obsolete AST-equality check was replaced with an actual independently executed
+historical SignalModel comparison for aligned inputs. Arrays match exactly there;
+new mapping metadata and missing-entry zeros are tested explicitly. The existing
+notebook-import test was updated to locate the user-edited import cell by content
+rather than a removed tag; the notebook itself was not modified.
+
+A new controlled 20-mm cube uses the supplied saved tissue fractions and exactly
+replayed seed-1 samples, with no B0, noise, MM/lipids or residual contamination.
+Existing tissue-dependent readout decay is retained. Tissue signals are integrated
+with the same 8000-mm^3 gain without allocating an anatomical cell-by-time array.
+Independent named complex sums agree with corrected production to relative error
+1.2810147432341715e-7, consistent with its complex64 arithmetic. Original inputs,
+normalization and sequence calibration are unchanged.
+
+Using the earlier LCModel settings, adapted only to actual TE97, present metabolite
+names, supplied basis/grid and water concentration, the matched-water results are:
+
+| Metabolite | Nominal mM | Historical positional control | Corrected control |
+| --- | ---: | ---: | ---: |
+| NAA | 10.008235 | 2.561 | 9.705 |
+| NAAG | 2.614968 | 0.762 | 2.506 |
+| bHG | 3.966743 | 4.729 | 3.927 |
+| Cr | 4.873432 | 1.375 | 4.611 |
+| Glu | 7.915198 | 0.265 | 7.695 |
+| mI | 5.227995 | 9.813 | 5.059 |
+
+Corrected NAA remains about 3.03% low and bHG about 1.00% low; no gain was tuned to
+remove these residual fitting/quantification differences. Phased-real residuals
+are 1.20336% historical versus 0.80589% corrected. Six actual LCModel fits completed
+(three water/input cases per control), with PDFs and complete outputs under
+`outputs/te97_name_fix_validated/fit_corrected/` and `fit_historical/`. These are
+controlled new datasets, not claims of original RAW replay. The first fitting
+attempts exposed a research-runner formatting error (`ECHOT=97.0.`); formatting
+floating TE as valid Fortran input fixed that setup failure without changing fit
+settings. Failed attempts remain preserved.
+
+Commands executed with Pixi:
+
+```bash
+pixi run python -m pytest -q tests/test_named_metabolites.py
+pixi run python -m pytest -q tests --ignore=tests/integration
+pixi run python -m research.validation.te97_concentration_order.validate_fix --source "$TE97_SOURCE" --output outputs/te97_name_fix_validated
+pixi run python -m research.validation.lcmodel_legacy_water.run --source outputs/te97_name_fix_validated/corrected --output outputs/te97_name_fix_validated/fit_corrected --binary "$LCMODEL_BINARY"
+pixi run python -m research.validation.lcmodel_legacy_water.run --source outputs/te97_name_fix_validated/historical --output outputs/te97_name_fix_validated/fit_historical --binary "$LCMODEL_BINARY"
+```
+
+All Python commands used the existing Pixi environment (MPLCONFIGDIR directed to a
+writable temporary cache). No Git staging/commits or frozen calibration changes.
+
+Final verification: the non-fitting suite passed **305 tests** (33 existing dependency/legacy warnings, 127.39 s); the focused name-keying suite passed **5 tests**. No expected failures or skips were used.

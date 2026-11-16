@@ -91,9 +91,10 @@ class Basis():
         
         # Set attributes
         self.basisFSL = basis
-        self.names = [n.split('.')[0] for n in basis.names]
-        self.n_metabs = len(self.names)
-        self.fids = basis._raw_fids
+        names = [n.split('.')[0] for n in basis.names]
+        if len(set(names)) != len(names):raise ValueError('ambiguous metabolite names after suffix removal')
+        self.responses_by_name = {name:basis._raw_fids[:,i].copy() for i,name in enumerate(names)}
+        self.n_metabs = len(names)
         self.dwelltime = float(basis.original_dwell)
         self.n = basis.original_points
         self.t = np.arange(self.dwelltime, self.dwelltime * (self.n + 1), self.dwelltime)
@@ -111,6 +112,14 @@ class Basis():
         #     self.TE = float(match.group(3))
         # else:
         #     raise ValueError(f"Filename does not match expected pattern: {filename}")
+
+    @property
+    def names(self):
+        return list(self.responses_by_name)
+
+    @property
+    def fids(self):
+        return np.column_stack(list(self.responses_by_name.values()))
 
     def reset_basis(self, metabs=None, bw=None, points=None):
         """
@@ -148,6 +157,7 @@ class Basis():
                     print(f"Warning: '{name}' not in the list of translation. Removing from basisset...")
                     basis.remove_fid_from_basis(name)
         
+        if len(set(basis.names)) != len(basis.names):raise ValueError('ambiguous metabolite alias collision')
         sorted_indices = sorted(range(len(basis.names)), key=lambda k: basis.names[k].lower())
         new_names = [basis.names[i] for i in sorted_indices]
         new_arrays = basis.original_basis_array[:, sorted_indices]

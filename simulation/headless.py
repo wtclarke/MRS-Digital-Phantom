@@ -169,6 +169,7 @@ def simulate_batch(
                 "voxel_weighted": model.final_voxel_concentrations,
                 "tissue_fractions": model.voxel_tissue_fractions,
             }
+            ground_truth["metabolite_mapping"] = model.metabolite_mapping_metadata
             sim_params = {
                 "skeleton": "MRiLab",
                 "path2metabs": settings.get("path2metabs",DEFAULT_METAB_DF_PATH),
@@ -176,6 +177,7 @@ def simulate_batch(
                 "metabs": phantom.metabs,
                 "basis_set_settings": basis_settings,
                 "simulation_params": simulation_settings,
+                "metabolite_mapping":model.metabolite_mapping_metadata,
                 "seed": seed,
                 "voxel_definitions": {
                     "coords": bounds,

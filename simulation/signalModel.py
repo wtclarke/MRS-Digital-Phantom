@@ -148,84 +148,54 @@ class SignalModel:
         return spec, components
 
     def simulate_metabs(self):
-        # Remove metabolites from metabolite dataframe that are not in the basis set
-        self.log("Removing metabolites from dataframe that are not in the basis set...")
-        self.log(f"{len(set(self.metab_df['Metabolite'].unique()) - set(self.basis.names))} metabolites removed: {set(self.metab_df['Metabolite'].unique()) - set(self.basis.names)}", 'red')
-
-        metab_df = self.metab_df[self.metab_df['Metabolite'].isin(self.basis.names)]
-
-        fids = torch.tensor(self.basis.fids[torch.newaxis, :, :])        # (1, N, M)
-        t = torch.tensor(self.basis.t[torch.newaxis, :, torch.newaxis])  # (1, N, 1)
-        f = torch.tensor(self.basis.f[torch.newaxis, :, torch.newaxis])  # (1, N, 1)
-
-        # # Creatine index for peak area estimation
-        # cr_idx = self.basis.names.index('Cr')   
-        # # # Extract creatine spectrum from basis set
-        # cr_fid = fids[0,:,cr_idx]
-        # cr_spec = torch.fft.fftshift(torch.fft.fft(cr_fid, dim=0), dim=0)
-        # # # Find the methyl peak area (-CH3 group with 3 protons, ~ 3.0 ppm)
-        # ch3_spec = cr_spec[(self.basis.ppm > 2.9) & (self.basis.ppm < 3.2)]
-        # ppm_axis = self.basis.ppm[(self.basis.ppm > 2.9) & (self.basis.ppm < 3.2)]
-        # ch3_area = simpson(ch3_spec.real, x=ppm_axis)
-        # one_proton_area = ch3_area / 3.0  # Area under the curve for one proton
-
-        # Extract metabolite concentrations for the given labels
-        metab_specs = []
-        sampled_concs_per_tissue = {} # NEW: dictionary to store sampled metabolite concentrations for each tissue type
+        responses = getattr(self.basis, 'responses_by_name', None)
+        if responses is None:
+            # Compatibility boundary for external matrix-only basis providers.
+            names = list(self.basis.names)
+            if len(set(names)) != len(names) or self.basis.fids.shape[1] != len(names):
+                raise ValueError('basis names must uniquely identify every response column')
+            responses = dict(zip(names, self.basis.fids.T))
+        names = list(responses)
+        selected = self.metab_df[self.metab_df['Metabolite'].isin(names)]
+        if selected.duplicated(['Tissue','Metabolite']).any():
+            raise ValueError('duplicate tissue/metabolite concentration rows')
+        fids = torch.tensor(np.column_stack([responses[n] for n in names])[None,:,:])
+        t = torch.tensor(self.basis.t[None,:,None])
+        spectra = []
+        sampled_by_tissue = {}
+        missing_by_tissue = {}
+        self.metabolite_parameters_by_tissue = {}
         for label in self.labels:
-            # Subset dataframe based on tissue label
-            df = metab_df[metab_df['Tissue'] == label]
-
-            # If no metabolites are present in the dataframe for this label, set the spectrum to zero
-            if df.shape[0] == 0:
-                metab_specs.append(torch.zeros((1, self.basis.n), dtype=torch.complex64))
-                sampled_concs_per_tissue[label] = {} # NEW: ensure empty dictionary stored for tissues without metabolites in dataframe
+            rows = selected[selected['Tissue'] == label]
+            # Keep historical CSV-order draws; join the resulting samples by name.
+            means = torch.tensor(rows['Conc_mean'].values)
+            stds = torch.tensor(rows['Conc_std'].values)
+            means[torch.isnan(means)] = 0.
+            stds[torch.isnan(stds)] = 0.
+            draws = torch.normal(means, stds) if len(rows) else torch.empty(0,dtype=torch.float64)
+            records = {name:{'concentration':float(c),'T2_ms':float(t2)}
+                       for name,c,t2 in zip(rows['Metabolite'],draws,rows['T2'])}
+            missing_by_tissue[label] = [n for n in names if n not in records]
+            for name in missing_by_tissue[label]:
+                records[name] = {'concentration':0.,'T2_ms':float('nan')}
+            self.metabolite_parameters_by_tissue[label] = records
+            sampled_by_tissue[label] = {n:records[n]['concentration'] for n in names}
+            if not len(rows):
+                spectra.append(torch.zeros((1,self.basis.n),dtype=torch.complex64))
                 continue
-
-            # Concentrations
-            concs_mean = torch.tensor(df['Conc_mean'].values)
-            concs_std = torch.tensor(df['Conc_std'].values)
-            concs_mean[torch.isnan(concs_mean)] = 0.0  # Set NaN to zero
-            concs_std[torch.isnan(concs_std)] = 0.0    # Set NaN to zero
-            concs = torch.normal(concs_mean, concs_std)  # Sample from normal distribution
-            
-            # NEW: store sampled concentrations for this tissue
-            sampled_concs_per_tissue[label] = {
-                metab_name: float(conc)
-                for metab_name, conc in zip(df['Metabolite'].values, concs)
-            } # NEW: store metabolite concentrations sampled for this tissue before spectral synthesis
-
-            # T2 relaxation (Lorentzian linewidth)
-            t2s = torch.tensor(df['T2'].values)
-            gamma = 1/(torch.pi * t2s * 1e-3)
-            # Gaussian linewidth
-            sigma = torch.ones_like(concs) * 0.0
-            # Frequency shift per metabolite
-            eps = torch.ones_like(concs) * 0.0
-
-            # set nan values to zero
-            gamma[torch.isnan(gamma)] = 0
-
-            # Reshape
-            fid = fids * torch.exp(-1j * eps * t - gamma * t - (sigma*t)**2)
-            spec = torch.fft.fftshift(torch.fft.fft(fid, dim=1), dim=1)
-            
-            # Multiply with concentrations
-            specs = concs * spec
-            specs = specs.sum(dim=-1)
-
-            # Add to list
-            metab_specs.append(specs)
-        
-
-        # Convert to tensor (torch.complex64)
-        metab_specs = torch.stack(metab_specs, dim=0).squeeze()
-        metab_specs = metab_specs.to(torch.complex64)
-        
-        self.sampled_concs_per_tissue = sampled_concs_per_tissue # NEW: save per-tissue sampled concentrations to SignalModel object for later retrieval and voxel mixing
-
-        return metab_specs
-
+            concs = torch.tensor([records[n]['concentration'] for n in names],dtype=draws.dtype)
+            t2s = torch.tensor([records[n]['T2_ms'] for n in names],dtype=draws.dtype)
+            gamma = 1/(torch.pi*t2s*1e-3)
+            gamma[torch.isnan(gamma)] = 0.
+            sigma = torch.zeros_like(concs)
+            eps = torch.zeros_like(concs)
+            fid = fids*torch.exp(-1j*eps*t-gamma*t-(sigma*t)**2)
+            spec = torch.fft.fftshift(torch.fft.fft(fid,dim=1),dim=1)
+            spectra.append((concs*spec).sum(dim=-1))
+        self.sampled_concs_per_tissue = sampled_by_tissue
+        self.metabolite_mapping_metadata = {'version':'name-keyed-v1',
+            'sampling':'CSV-order draws joined by name','missing_entries_zero_filled':missing_by_tissue}
+        return torch.stack(spectra,dim=0).squeeze().to(torch.complex64)
 
     def simulate_mms(self):
         mm_spec = simulate_MMs(tesla=self.B0, 

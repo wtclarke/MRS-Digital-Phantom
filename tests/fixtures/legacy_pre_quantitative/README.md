@@ -12,3 +12,7 @@ All complex total/component arrays, concentrations, axes and relevant metadata a
 required to match exactly. This baseline does not require Git history at test time.
 It establishes compatibility for the exercised configuration, not every possible
 external phantom, lipid runner or platform.
+
+The name-keyed-v1 correction supersedes AST equality: the behavioral regression
+now executes this saved SignalModel independently and compares an aligned-input
+case exactly, with explicit additive metadata/zero-filled-entry checks.

@@ -57,5 +57,6 @@ tests/fixtures/legacy_pre_quantitative/signalModel.py
 tests/test_basis_h2o.py
 tests/test_calibration_resources.py
 tests/test_legacy_basis_water.py
+tests/test_named_metabolites.py
 tests/test_quantitative_production.py
 tests/test_quantitative_production_legacy.py

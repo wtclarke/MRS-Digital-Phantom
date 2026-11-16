@@ -23,6 +23,7 @@ docs/mrscloud_spatial_b0_fitting_validation.md
 docs/mrscloud_tissue_relaxation.md
 docs/mrscloud_water_calibration.md
 docs/mrscloud_water_processing_validation.md
+docs/te97_concentration_order_diagnosis.md
 examples/capture_naa_response.m
 examples/capture_water_processing.m
 examples/fsl_mrs_quantification_scaling_derivation.py
@@ -56,6 +57,8 @@ research/validation/basis_h2o/README.md
 research/validation/basis_h2o/validate_basis_h2o.py
 research/validation/lcmodel_legacy_water/run.py
 research/validation/lcmodel_legacy_water/summarize.py
+research/validation/te97_concentration_order/diagnose.py
+research/validation/te97_concentration_order/validate_fix.py
 simulation/frozen_basis_normalization.py
 simulation/mrscloud_quantitative_pair.py
 simulation/mrscloud_sequence_reference.py

@@ -41,7 +41,7 @@ def run(source,output,binary,basis=None):
             errors[name]=float(abs(stored.conj()-fid).max())
         control=control_text(directory,adapted,names=[e[0] for e in entries],points=len(fid),dwell_time_s=dt,
             frequency_mhz=cf,origin_ppm=origin,water_mol_l=cw)
-        control=control.replace('ECHOT=30.',f"ECHOT={cfg['basis_set_settings']['TE']}.").replace('Phase7b exact Phase7a noise-free acquisition',f'Legacy saved {acquisition}, GE PRESS TE35')
+        control=control.replace('ECHOT=30.',f"ECHOT={float(cfg['basis_set_settings']['TE']):g}.").replace('Phase7b exact Phase7a noise-free acquisition',f"Legacy saved {acquisition}, TE{float(cfg['basis_set_settings']['TE']):g}")
         omit=[e[0] for e in entries if e[0] not in names]
         control=control[:control.index(' NSIMUL=')]+f' NSIMUL=0, NRATIO=0, NOMIT={len(omit)}\n'+''.join(f" CHOMIT({i})='{n}'\n" for i,n in enumerate(omit,1))+' $END\n'
         (directory/'lcmodel.CONTROL').write_text(control)

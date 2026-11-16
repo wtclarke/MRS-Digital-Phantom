@@ -28,13 +28,13 @@ def probe():
         b=model.simulate_metabs().numpy().reshape(-1)
         corrected=np.linalg.lstsq(design,b,rcond=None)[0]
     finally:torch.random.set_rng_state(before)
-    np.testing.assert_allclose(coefficients,[2,8],rtol=2e-7,atol=2e-7)
+    np.testing.assert_allclose(coefficients,[8,2],rtol=2e-7,atol=2e-7)
     np.testing.assert_allclose(corrected,[8,2],rtol=2e-7,atol=2e-7)
     assert recorded=={'Cr':2.,'NAA':8.}
     return {'metadata_concentrations':recorded,'basis_order':['NAA','Cr'],
         'actual_synthesized_coefficients':coefficients.real.tolist(),
         'name_aligned_control_coefficients':corrected.real.tolist(),
-        'note':'Control changes the in-memory test table only, not production code or collaborator data.'}
+        'note':'Current production is name-keyed; historical failing results remain in the original diagnosis artifacts.'}
 
 
 def diagnose(source,report_text,output):
@@ -87,7 +87,7 @@ def diagnose(source,report_text,output):
     assert abs(naa['LCModel_reported_mM']/naa['actual_assigned_mM']-1)<.05
     assert abs(naa['LCModel_reported_mM']/naa['nominal_mM']-1)>.5
     assert before=={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
-    result={'concentration_seed_replay_max_error':replay_error,'controls':controls,'bases':tables,'source_hashes':before,'source_files_unchanged':True,
+    result={'concentration_seed_replay_max_error':replay_error,'controls':controls,'bases':tables,'source_hashes':before,'source_files_unchanged':True,'mapping_scope':'historical positional assignment reconstructed for the supplied PDF',
         'NAA_nominal_to_assigned_ratio':naa['nominal_mM']/naa['actual_assigned_mM'],
         'LCModel_fits_rerun':False,'missing_inputs':['output.RAW','water.RAW','TABLE/PRINT/COORD','original NIfTI-MRS signals']}
     (output/'diagnosis.json').write_text(json.dumps(result,indent=2)+'\n')

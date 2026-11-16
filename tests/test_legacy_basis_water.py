@@ -76,7 +76,7 @@ def test_notebook_legacy_reference_imports_from_notebooks_directory():
     from pathlib import Path
     root=Path(__file__).resolve().parents[1]
     notebook=json.loads((root/'notebooks/headless_simulation.ipynb').read_text())
-    cell=next(c for c in notebook['cells'] if c['cell_type']=='code' and 'legacy_basis_h2o_demo' in c.get('metadata',{}).get('tags',[]))
+    cell=next(c for c in notebook['cells'] if c['cell_type']=='code' and 'from examples.legacy_basis_water import configuration' in ''.join(c['source']))
     imports=''.join(cell['source']).split('legacy_reference_settings =')[0]
     result=subprocess.run([sys.executable,'-c',imports],cwd=root/'notebooks',
         env=dict(os.environ,PYTHONPATH=''),capture_output=True,text=True)
