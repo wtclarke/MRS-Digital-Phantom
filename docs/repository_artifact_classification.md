@@ -28,7 +28,8 @@ Phase 9 does not solve dependencies or alter the Pixi lockfile.
 | `calibration/__init__.py`, README, `frozen_file_hashes.json` | B/C resources and integrity | Package resource discovery/test record | Commit 1 | `calibration/` | Same | Add | Package data and original-seven-file hash record |
 | `tests/test_quantitative_production.py`, `test_quantitative_production_legacy.py`, `test_calibration_resources.py`, `tests/fixtures/legacy_pre_quantitative/` | C production tests | Release checks only | Commit 1 | `tests/` | Same | Remove historical-output/Git-history dependencies; retain fixed baseline sources | Independent production coverage without fitting binaries, external anatomy or research captures |
 | `tests/test_analytical_water_reference.py`, `test_analytical_voxel_reference.py`, `test_nifti_mrs_roundtrip.py` and analytical runtime helpers | C existing regression | Existing supported analytical/legacy paths | Already tracked baseline | `tests/`, `simulation/` | Same | Preserve | No analytical behavior changes |
-| `notebooks/headless_simulation.ipynb` | C demonstration | Optional interactive use | Commit 1 | `notebooks/` | Same | Append cells 8–17; retain legacy cells and outputs | New standalone section calls production API, no fitting/regeneration |
+| `notebooks/headless_simulation.ipynb` | C demonstration | Optional interactive use | Commit 1 | `notebooks/` | Same | Retain legacy cells and outputs | Legacy demonstration is separate from quantitative examples |
+| `notebooks/quantitative_headless_simulation.ipynb` | C demonstration | Optional interactive use | Commit 1 | `notebooks/` | Same | Extract former quantitative cells without changing simulation code | Standalone notebook calls production API, no fitting/regeneration |
 | `examples/configs/quantitative/*.json`, `quantitative_water_reference_production.py`, `execute_quantitative_notebook.py`, `verify_production_release.py` | C usage/verification | Production demos/release tooling | Commit 1 | `examples/` | Same | Add supported examples | No dependency on research examples or their output directories |
 | User guide, Phase 8 integration report, Phase 9 release report/classification/manifests, AGENTS.md | C production documentation | Usage and release policy | Commit 1 | `docs/`, root | Same | Add/update | Core installation/use independent of scientific archive |
 | `pyproject.toml`, `pixi.lock`, `.gitignore` | A/C packaging/config | Reproducible environment, resources, artifact policy | Commit 1 | Root | Same | Package calibration; retain validated existing lock; ignore new outputs | No new dependency needed for notebook execution |
@@ -122,3 +123,19 @@ is performed. The release report records actual counts, numerical comparisons an
 notebook coverage. A reviewer can additionally create a clean checkout after
 manually committing Commit 1, run `pixi install`, the documented CLI, the notebook
 section and the production regression command without Commit 2.
+
+## Phase 10 additions
+
+| File or directory | Category | Runtime requirement | Git policy | Current location | Proposed location | Migration action | Reason |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `simulation/basis_h2o.py` and private response-loader seams in existing quantitative adapters | A production | Optional supplied-BASIS mode | Production commit | `simulation/` | Same | Add explicit dispatch/backend | Reuses all scientific weighting/relaxation/noise/export equations |
+| `tests/test_basis_h2o.py`, `examples/basis_h2o_headless.py`, updated notebook/runner and BASIS-H2O guide | C production | Supported usage and independent tests | Production commit | Existing packages | Same | Add; retain both earlier demonstrations | No external BASIS required by unit tests; notebook path comes from environment |
+| `research/validation/basis_h2o/` | D optional research | None | Separate optional research commit | `research/validation/basis_h2o/` | Same | Add read-only audit | Actual-file/MAT comparison is never imported by production |
+| Supplied BASIS, companion MAT and generated Phase 10 acquisitions | E external/generated | User supplies BASIS only when selecting this mode | Do not commit | User-managed path / ignored `outputs/` | Same | Preserve without copying | No permission to redistribute external assets |
+
+Exact proposed paths are in `commit_manifests/phase10_production.txt` and
+`commit_manifests/phase10_research.txt`. The production proposal includes the earlier
+requested notebook split and its documentation updates, which share modified files
+with Phase 10. Review these overlapping changes before manually staging. No automatic
+staging, commit or history change is performed. Neither list contains calibration
+assets or generated acquisitions.

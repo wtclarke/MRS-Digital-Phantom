@@ -1,0 +1,11 @@
+docs/commit_manifests/legacy_water_production.txt
+docs/commit_manifests/production.txt
+docs/legacy_basis_water_reference.md
+docs/quantitative_simulator_user_guide.md
+examples/legacy_basis_water.py
+notebooks/headless_simulation.ipynb
+simulation/basis.py
+simulation/headless.py
+simulation/legacy_water_reference.py
+simulation/mrs_phantom.py
+tests/test_legacy_basis_water.py

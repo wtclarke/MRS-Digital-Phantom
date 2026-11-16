@@ -210,3 +210,24 @@ No scientific model or empirical calibration correction was added. Relative sequ
 response remains distinct from physical scanner calibration and fitted concentration.
 Recommended next step: review the two manifests and proposed production commit;
 do not launch further fitting as part of Phase 9.
+
+## Subsequent notebook organization (2026-11-01)
+
+The former quantitative section is now the standalone
+`notebooks/quantitative_headless_simulation.ipynb`. All five simulation code cells
+were moved unchanged. `headless_simulation.ipynb` retains its eight legacy cells,
+unchanged code and existing outputs. The runner, user guide, classification and
+production manifest now point to the separate notebook (49 production paths;
+the historical counts above describe the original Phase 9 verification).
+
+Executed successfully using Pixi:
+
+```bash
+MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m examples.execute_quantitative_notebook --output outputs/phase9_release_validation/notebook_split_20261101
+```
+
+All code cells 1, 2, 4, 6 and 8 passed in a fresh kernel, including complex paired
+export/reload and deterministic-noise assertions. New outputs remain under ignored
+`outputs/`; the source notebook contains no embedded execution outputs. No simulation
+code changed, no fitting ran, and the legacy notebook/full pytest suite were not
+rerun for this file split.

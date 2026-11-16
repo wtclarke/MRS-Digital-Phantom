@@ -5,6 +5,7 @@ docs/fsl_mrs_water_preprocessing.md
 docs/fsl_mrs_water_scaling_validation.md
 docs/lcmodel_fit_bias_diagnostics.md
 docs/lcmodel_initial_validation.md
+docs/lcmodel_legacy_water_conformance.md
 docs/lcmodel_noise_monte_carlo_comparison.md
 docs/mrscloud_frozen_normalization.md
 docs/mrscloud_full_basis_water_reference.md
@@ -51,6 +52,10 @@ examples/sequence_matched_water.m
 research/README.md
 research/calibration_generation/README.md
 research/validation/README.md
+research/validation/basis_h2o/README.md
+research/validation/basis_h2o/validate_basis_h2o.py
+research/validation/lcmodel_legacy_water/run.py
+research/validation/lcmodel_legacy_water/summarize.py
 simulation/frozen_basis_normalization.py
 simulation/mrscloud_quantitative_pair.py
 simulation/mrscloud_sequence_reference.py

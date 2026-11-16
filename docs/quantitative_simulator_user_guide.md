@@ -39,23 +39,23 @@ residual-water settings or the legacy batch seed to quantitative mode.
 
 ## Notebook
 
-Open `notebooks/headless_simulation.ipynb` using a kernel backed by the repository
-Pixi Python. The original legacy demonstration precedes a standalone section titled
-**Sequence-matched quantitative simulation with an unsuppressed water reference**.
-That section can run in a fresh kernel; it does not depend on the preceding cells.
+Open `notebooks/quantitative_headless_simulation.ipynb` using a kernel backed by
+the repository Pixi Python. It is a standalone notebook titled **Sequence-matched
+quantitative simulation with an unsuppressed water reference**. The original legacy
+demonstration remains in `notebooks/headless_simulation.ipynb`.
 It demonstrates pure WM, 20/30/50% WM/GM/CSF, and relaxation/B0/noise. All examples
 call `run_headless`. Spectra retain their relative units with separate axes.
 New figures and acquisitions go into a unique timestamped directory below
 `outputs/notebook_quantitative_demo/`; new embedded outputs are not committed.
 
-For reproducible section execution without adding notebook dependencies:
+For reproducible notebook execution without adding notebook dependencies:
 
 ```bash
 pixi run python -m examples.execute_quantitative_notebook \
   --output outputs/my_notebook_execution
 ```
 
-This uses installed `jupyter_client` and `ipykernel`, runs only the new section and
+This uses installed `jupyter_client` and `ipykernel`, runs the complete quantitative notebook and
 records cell status. It does not claim full execution of the anatomical legacy
 example, which needs the MRiLab data and legacy lipid simulation dependencies.
 
@@ -207,3 +207,21 @@ it is not scanner-level absolute calibration. RF/sequence sensitivity, basis DC
 processing, finite-grid integration and fitting-package quantification conventions
 remain scientifically relevant. Generated ground truth is not a promise of unbiased
 fitted concentration. No new fitting or scientific calibration occurs in Phase 9.
+
+## Optional supplied-BASIS H2O reference
+
+`water_reference_mode: basis_h2o` selects a separate approximate pathway using the
+H2O component in an external LCModel BASIS. It takes a basis path and the same
+headless voxel geometry, explicit mM tissue profiles and quantitative controls;
+no frozen bundle is needed. Common BASIS/proton-response scaling must be explicitly
+acknowledged, and acquisition reference ppm declared. Legacy and the frozen
+sequence-matched mode remain unchanged. See [the complete BASIS-H2O guide](basis_h2o_water_reference.md)
+for API, runnable example, inspected GE PRESS TE35 results, notebook section, units
+and RF/processing limitations. The unsuppressed reference is never residual water.
+
+## Legacy batch with BASIS water
+
+The legacy-shaped `simulate_batch` interface also supports an opt-in separate water
+reference while preserving shim, MM/lipids, residual water, table sampling and seeds.
+See [legacy batch water reference](legacy_basis_water_reference.md) for the required
+unit assumptions, settings, additional outputs and runnable notebook/example.
