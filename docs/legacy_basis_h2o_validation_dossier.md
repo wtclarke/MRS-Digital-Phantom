@@ -30,7 +30,7 @@ The present record has no prospectively approved concentration-recovery acceptan
 
 The relevant interface is [simulate_batch](../simulation/headless.py) with legacy `simulation_params`, `basis_set_settings`, and `water_reference_mode='basis_h2o'`. The example configuration is [legacy_basis_water.py](../examples/legacy_basis_water.py); reference preparation, synthesis and export are in [legacy_water_reference.py](../simulation/legacy_water_reference.py). The [legacy workflow description](legacy_basis_water_reference.md) documents the options.
 
-The similarly named [standalone BASIS-H2O pathway](basis_h2o_water_reference.md) uses the `quantitative` schema and different spatial and normalization conventions. Its pure-tissue, relaxation and noise results are supporting component context, not direct validation of this legacy integration. Frozen sequence-matched quantitative simulations are also a separate pathway.
+The standalone quantitative pathways have been removed. This dossier concerns only the legacy integration demonstrated in the notebook.
 
 ### Shared signal formation
 
@@ -98,7 +98,6 @@ Compare LCModel's concentration column against voxel-average truth, matching met
 | Optional water relaxation | Same test file, `test_fixed_normalizer_and_validation` | Required declaration and calculated factor checked; not a full mixed-tissue relaxed-signal recovery study |
 | Actual legacy notebook execution | [Execution record](../outputs/legacy_basis_water_validation/notebook_final/notebook_execution.json) and [workflow report](legacy_basis_water_reference.md) | Historical GE/MRiLab execution without fitting; does not establish execution of the current notebook source |
 | Water-scaled concentration recovery | [LCModel conformance report](lcmodel_legacy_water_conformance.md) and saved artifacts below | One voxel, one seed, one supplied basis, one fitter version; individual and grouped errors reported below |
-| Broader nominal quantitative behavior | [Standalone BASIS-H2O report](basis_h2o_water_reference.md) and related quantitative reports | Different pathway; no automatic transfer of its numerical tolerances to the legacy example |
 
 The [original paper](Magnetic%20Resonance%20in%20Med%20-%202025%20-%20Sande%20-%20A%20Digital%20Phantom%20for%20MR%20Spectroscopy%20Data%20Simulation.pdf), DOI [10.1002/mrm.70138](https://doi.org/10.1002/mrm.70138), used Osprey estimates from acquired spectra as simulation inputs and adjusted remaining parameters for resemblance (PDF p8). Its comparison reported incomplete distributional overlap and significant differences for some fitted components (PDF pp10–11). Similar Cr linewidths therefore support a realism argument, not a known-concentration recovery bound. Residual water in that paper is distinct from this extension. Its reproducibility review excluded scientific accuracy and efficiency (PDF p13).
 
@@ -114,7 +113,7 @@ The saved source used shim amplitude 3 Hz and residual-water amplitude factor 5.
 
 The [runner](../research/validation/lcmodel_legacy_water/run.py) fitted saved total and metabolite-only acquisitions against the matching supplied basis with LCModel 6.3-1N. All 18 present metabolites were fitted. The [saved CONTROL](../outputs/lcmodel_legacy_water_conformance/20261101T182122316149Z_fits/total_voxel_water/lcmodel.CONTROL) specifies water scaling, no eddy-current correction, `ATTH2O=ATTMET=1`, NAA scaling at 2.01 ppm with three protons, `PPMCEN=4.68`, window 0.2–4.2 ppm, `NSIMUL=0`, `NRATIO=0`, and default baseline/line-shape settings. H2O and six unused entries, including bHG, are omitted. Total-spectrum MM/lipid contributions are not explicitly represented by this spin-system-only fitting protocol.
 
-`FWHMBA=1/127.731=0.007828953... ppm` was inherited from an earlier 1 Hz synthetic-basis experiment. That conversion alone does not establish the supplied GE basis's appropriate effective width. The [integration-sensitivity investigation](lcmodel_fit_bias_diagnostics.md#4-reference-integration-sensitivity) shows that FWHMBA can change concentration scaling. The setting is recorded for reproducibility, not endorsed as a universal basis-width choice. LCModel parameter definitions are in the [manual, §§8.6.4.1 and 10.2](https://www.lcmodel.com/pub/LCModel/manual/manual.pdf).
+`FWHMBA=1/127.731=0.007828953... ppm` was inherited from an earlier 1 Hz synthetic-basis experiment. That conversion alone does not establish the supplied GE basis's appropriate effective width. FWHMBA can affect concentration scaling; no basis-width sensitivity sweep was performed for this legacy voxel. The setting is recorded for reproducibility, not endorsed as a universal basis-width choice. LCModel parameter definitions are in the [manual, §§8.6.4.1 and 10.2](https://www.lcmodel.com/pub/LCModel/manual/manual.pdf).
 
 | Case | Acquisition | WCONC, mM | Phased-real relative residual |
 | --- | --- | ---: | ---: |
@@ -173,7 +172,7 @@ On 11 November 2026, read-only inspection found all three cases' reports present
 
 This inspection is anchored to checkout HEAD `01036a30f7b827894a27d2c7ec7fbee7b80027c5`, with modified and untracked sources present. HEAD alone does not identify the reviewed working tree or the historical executed simulator. A submission copy needs a controlled source/artifact snapshot; historical commands and input hashes do not establish full source-version traceability.
 
-The current notebook also accesses `original_wref_settings` before initializing it in the following cell. That section cannot run top-to-bottom in a fresh kernel as written, and its configured source-basis path is unavailable locally. These limitations are recorded rather than repaired by this documentation task. The historical notebook record cannot certify the current cell order or personal path.
+At the 11 November inspection, the notebook accessed `original_wref_settings` before initialization and its external basis path was unavailable. Those observations concern that inspected source and environment. The retained notebook initializes its configuration before use, but the historical execution record still cannot certify the current source or availability of personal paths.
 
 ### Documentation acceptance checks
 

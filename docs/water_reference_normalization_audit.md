@@ -1,4 +1,9 @@
-## Phase 1 audit
+## Historical Phase 1 normalization audit
+
+This records the original metabolite and residual-water pathway before the optional
+BASIS-H2O reference. Later [provenance findings](water_reference_provenance_audit.md)
+correct its T2 interpretation; [export checks](nifti_mrs_export_validation.md) and
+[legacy reference instructions](legacy_basis_water_reference.md) document subsequent behavior.
 
 Files modified: None.
 Tests executed: None; this was a read-only audit.
@@ -14,7 +19,7 @@ Tests executed: None; this was a read-only audit.
 
 simulate_water() (simulation/signalModel.py (simulation/signalModel.py:282)) creates five damped water components. Their amplitudes are determined by water_amp_factor, a fixed component-amplitude array, and generate_sum_fid()’s scaling argument (simulation/water/water_sim.py (simulation/water/water_sim.py:10)). It multiplies this signal by tissue water concentrations from utils/definitions.py (utils/definitions.py:172), then applies the same VOI label mixing, shim, voxel-volume weighting, summation, and unnormalized FFT convention as the metabolite path.
 
-The water concentrations are specified as tissue fractions times 55.5 (WM, GM, CSF), consistent with the plan’s approximate molar values. The residual-water signal has no explicit water-proton factor, T1 saturation, or TE/T2 attenuation. save_unsuppressed_water stores the tissue-specific intermediate before voxel integration and shim; it is not the final voxel-level reference.
+The water concentrations are specified as tissue fractions times 55.5 (WM, GM, CSF), the approximate molar values used in the tissue model. The residual-water signal has no explicit water-proton factor, T1 saturation, or TE/T2 attenuation. save_unsuppressed_water stores the tissue-specific intermediate before voxel integration and shim; it is not the final voxel-level reference.
 
 ### FFT and export
 
@@ -32,16 +37,10 @@ Not established; the current code does not support a justified quantitative comp
 - The metabolite ground-truth concentration mixture is not a signal-equivalent mixture when tissue-specific basis responses and T2 attenuation differ.
 - Basis TE, sequence, and original basis amplitude conventions have not been reconciled with the concentration dataframe’s units.
 
-The plan’s shared factor model S=K C n R cannot be confirmed from current code: there is no demonstrated shared K, and neither arm’s proton-count convention is defined well enough to derive one.
+A shared factor model S=K C n R cannot be confirmed from current code: there is no demonstrated shared K, and neither arm’s proton-count convention is defined well enough to derive one.
 
 ### Assumptions and uncertainties
 
 Verified: code-level scaling, transforms, tissue weighting, and the different export phase handling described above.
 
 Not verified: concentration units in the metabolite dataframe; proton content encoded in the source basis; whether source basis FIDs are already TE-attenuated or calibrated; intended meaning/units of water_amp_factor; whether the two export paths preserve the desired phase convention after reload. Those require inspecting the input basis provenance, concentration data provenance, and round-trip behavior.
-
-### Proposed changes after review
-
-Document the existing conventions first, including the basis normalization and residual-water model. Then decide whether to preserve source basis amplitudes or define a calibrated per-metabolite response, and define metabolite concentration units and proton-count handling without double counting basis-encoded protons. Specify sequence-specific T1/T2 attenuation and the target concentration convention. Only then define a water-reference amplitude on a demonstrably shared scale. Finally, reconcile or explicitly document the export phase convention and validate complex amplitude round trips.
-
-Recommended next step: review these findings and resolve the basis and concentration provenance questions before Phase 2. No implementation was started.

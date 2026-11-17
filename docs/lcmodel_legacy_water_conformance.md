@@ -152,9 +152,9 @@ MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m research.validation.lcmodel_
   --binary "$LCMODEL_BINARY"
 MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m research.validation.lcmodel_legacy_water.summarize \
   outputs/lcmodel_legacy_water_conformance/20261101T182122316149Z_fits
-MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m pytest -q \
-  tests/test_lcmodel_quantitative_io.py tests/test_lcmodel_fit_bias_diagnostics.py tests/test_lcmodel_noise_analysis.py
-# 25 passed, 1 installed Dash deprecation warning, 2.13 s.
+# Historical adapter/diagnostic suite: 25 passed, 1 Dash warning, 2.13 s.
+# Quantitative-only diagnostic/noise tests have since been removed.
+# Retained LCModel adapter checks: tests/test_lcmodel_quantitative_io.py.
 ```
 
 The actual binary argument used the existing local `test_lcm/lcmodel` installation.

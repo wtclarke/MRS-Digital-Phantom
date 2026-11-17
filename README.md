@@ -180,3 +180,7 @@ We also thank all contributors who made practical improvements to this project t
 
 This work has been (partially) funded by:
 - European ITEA4 program (project 20209)
+
+## Headless notebook
+
+[headless_simulation.ipynb](notebooks/headless_simulation.ipynb) demonstrates batch MRiLab simulation, NIfTI-MRS export, a separate BASIS-H2O reference, and custom concentration tables matched by metabolite name. See the [legacy reference guide](docs/legacy_basis_water_reference.md) for signal assumptions and the [optional notebook research](research/README.md) for retained validation evidence. The GUI and older simulation notebooks remain supported.

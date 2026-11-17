@@ -4,8 +4,7 @@ import pandas as pd
 import pytest
 import torch
 from fsl_mrs.utils import mrs_io
-from test_basis_h2o import basis
-from test_quantitative_production_legacy import anatomy
+from legacy_support import anatomy
 from simulation import mrs_phantom
 from simulation.signalModel import SignalModel
 from simulation.headless import simulate_batch,results_to_nifti_mrs
@@ -40,6 +39,15 @@ def test_real_legacy_metabolites_shim_noise_and_paired_export(basis,monkeypatch,
     # 8 cells * 8 mm^3, with the real legacy exp(-i*2*pi*shim*t) and shifted time origin.
     expected=1000*cw*64*raw['H2O']/scalar*np.exp(-2j*np.pi*.5*np.arange(1,257)/2000)
     np.testing.assert_allclose(a['water_reference_fid'],expected,rtol=5e-6,atol=.01)
+    doubled=deepcopy(cfg)
+    doubled['water_reference']['water_concentrations_mol_l']={t:2*v for t,v in {'WM':39.0165,'GM':47.2305,'CSF':55.5}.items()}
+    twice=simulate_batch([(1,1,1)],doubled,seed=123)[0]
+    np.testing.assert_array_equal(twice['water_reference_fid'],2*a['water_reference_fid'])
+    residual=deepcopy(cfg)
+    residual['simulation_params']['water_amp_factor']=0.
+    without_residual=simulate_batch([(1,1,1)],residual,seed=123)[0]
+    np.testing.assert_array_equal(without_residual['water_reference_fid'],a['water_reference_fid'])
+    assert not torch.equal(without_residual['components']['Water'],a['components']['Water'])
     cfg['water_reference']['noise_sigma']=1
     noisy=simulate_batch([(1,1,1)],cfg,seed=123)[0]
     np.testing.assert_array_equal(noisy['spectrum'],a['spectrum'])
@@ -81,3 +89,13 @@ def test_notebook_legacy_reference_imports_from_notebooks_directory():
     result=subprocess.run([sys.executable,'-c',imports],cwd=root/'notebooks',
         env=dict(os.environ,PYTHONPATH=''),capture_output=True,text=True)
     assert result.returncode==0,result.stderr
+
+
+@pytest.mark.parametrize('settings',[
+    {'simulation_mode':'sequence_matched_quantitative','quantitative':{}},
+    {'water_reference_mode':'basis_h2o','quantitative':{}},
+    {'simulation_mode':'basis_h2o','quantitative':{}},
+    {'quantitative':{}},
+])
+def test_removed_modes_rejected(settings):
+    with pytest.raises(ValueError):simulate_batch([],settings)

@@ -2,9 +2,9 @@
 
 ## Project objective
 
-Implement a quantitatively calibrated unsuppressed water-reference simulation pathway for validating MRS fitting and metabolite concentration quantification.
+Preserve legacy MRS simulation and the headless notebook workflow, including its approximate BASIS-H2O water reference.
 
-Read `docs/water_reference_implementation_plan.md` before starting work.
+For changes to the water reference, read `docs/legacy_basis_water_reference.md` before starting work.
 
 ## Scientific correctness
 
@@ -22,7 +22,7 @@ Read `docs/water_reference_implementation_plan.md` before starting work.
 - Work on one implementation phase at a time.
 - Begin by inspecting the existing code.
 - Make small, reviewable changes.
-- Add tests for new quantitative behavior.
+- Add tests for changes to concentration, signal amplitude, and water-reference behavior.
 - Run relevant tests after making changes.
 - Report any scientific ambiguities requiring a decision.
 - Do not modify unrelated code.
@@ -48,6 +48,6 @@ After each task, report:
 4. Remaining uncertainties.
 5. Recommended next step.
 
-## Important restriction
+## Scientific scope
 
-Do not implement the quantitative water-reference pathway until the existing metabolite signal-normalization audit has been completed and reviewed.
+The BASIS-H2O reference assumes a common basis scale and nominal mM table values. Preserve these explicit assumptions; introducing a calibrated quantitative pathway requires a separate reviewed normalization audit and implementation plan.

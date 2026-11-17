@@ -1,5 +1,7 @@
 """Opt-in BASIS water on the legacy concentration, shim and volume convention."""
 import json
+from numbers import Integral
+from utils.definitions import H2O_CONCENTRATIONS
 import hashlib
 from pathlib import Path
 import numpy as np
@@ -7,10 +9,29 @@ import torch
 from fsl_mrs.utils import mrs_io
 from nifti_mrs.create_nmrs import gen_nifti_mrs
 from simulation.basis_h2o import ASSUMPTION,load_responses
-from simulation.quantitative import DEFAULT_WATER
-from simulation.tissue_relaxation import attenuation
-from simulation.mrscloud_quantitative_noise import complex_gaussian_noise
 from utils.auxillary import fid2spec,spec2fid
+
+
+DEFAULT_WATER={t:float(H2O_CONCENTRATIONS[t]) for t in ('WM','GM','CSF')}
+
+def attenuation(*, TE_s, TR_s, T1_s, T2_s):
+    """90-degree excitation, independent saturation and echo attenuation."""
+    values = np.asarray([TE_s, TR_s, T1_s, T2_s], dtype=float)
+    TE_s, TR_s, T1_s, T2_s = values
+    if not np.all(np.isfinite(values)) or TE_s < 0 or TR_s <= TE_s or T1_s <= 0 or T2_s <= 0:
+        raise ValueError('times must be finite seconds: TE >= 0, TR > TE, T1 > 0, T2 > 0')
+    return float(-np.expm1(-TR_s/T1_s)*np.exp(-TE_s/T2_s))
+
+def complex_gaussian_noise(points, *, sigma, seed):
+    """sigma is the SD of EACH real/imaginary FID component, in signal units."""
+    if isinstance(points,bool) or not isinstance(points,Integral) or points<=0:
+        raise ValueError('points must be a positive integer')
+    if not np.isfinite(sigma) or sigma<0:raise ValueError('sigma must be finite and nonnegative')
+    if isinstance(seed,bool) or not isinstance(seed,(Integral,np.random.SeedSequence)) or (isinstance(seed,Integral) and seed<0):
+        raise ValueError('seed must be a nonnegative integer or explicit SeedSequence')
+    if sigma==0:return np.zeros(points,complex)
+    values=np.random.Generator(np.random.PCG64(seed)).normal(0,sigma,size=(2,points))
+    return values[0]+1j*values[1]
 
 
 def prepare(settings):

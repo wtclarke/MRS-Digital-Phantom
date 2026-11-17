@@ -9,7 +9,6 @@ from utils.lcmodel_quantitative_io import (
     NAMES, compatible_basis, control_text, parse_basis, parse_coord, parse_raw, parse_table, write_raw,
 )
 
-BASIS=Path('outputs/mrscloud_full_basis/mrscloud_press_te30_quantitative/metabolite_basis.BASIS')
 
 
 def test_complex_raw_conjugation_precision_frequency_and_phase(tmp_path):
@@ -44,21 +43,21 @@ def test_invalid_raw_rejected(tmp_path,bad):
     with pytest.raises(ValueError):write_raw(tmp_path/'bad',bad,frequency_mhz=127.731)
 
 
-def test_basis_fixed_format_reference_cancellation_and_source_immutability(tmp_path):
-    if not BASIS.exists():pytest.skip('generated Phase 6a bundle unavailable')
+def test_basis_fixed_format_reference_cancellation_and_source_immutability(tmp_path,basis):
+    BASIS=basis[0]
     before=hashlib.sha256(BASIS.read_bytes()).hexdigest()
     target=tmp_path/'converted.BASIS'
-    meta=compatible_basis(BASIS,target,data_origin_ppm=4.68)
+    meta=compatible_basis(BASIS,target,data_origin_ppm=5.275)
     original,original_meta=parse_basis(BASIS);copy,copy_meta=parse_basis(target)
     assert copy_meta==original_meta
-    assert len(copy)==29
+    assert len(copy)==6
     assert meta['added_ISHIFT']==8 and meta['net_LCModel_referencing_shift']==0
     assert meta['spectrum_max_error']==0
     assert "FMTBAS='(2E25.16)'" in target.read_text()
     for a,b in zip(original,copy):
         assert a[0]==b[0]
         np.testing.assert_array_equal(a[2],b[2])
-        assert 'ISHIFT = 8' in b[1] or 'ISHIFT=8' in b[1].replace(' ','')
+        assert 'ISHIFT=8' in b[1].replace(' ','')
     assert hashlib.sha256(BASIS.read_bytes()).hexdigest()==before
 
 

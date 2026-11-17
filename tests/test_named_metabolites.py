@@ -40,7 +40,6 @@ def test_missing_duplicates_and_seed_draws():
     finally:torch.random.set_rng_state(state)
 
 
-from test_basis_h2o import basis
 
 
 def test_named_basis_reset_and_alias_collision(basis):

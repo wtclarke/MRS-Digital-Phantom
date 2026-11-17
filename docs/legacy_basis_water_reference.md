@@ -13,8 +13,7 @@ settings['water_reference'] = {
 ```
 
 `simulation_params` and `basis_set_settings` select this integrated legacy workflow.
-The existing `quantitative` schema still selects the standalone adapter. Mixing
-these schemas is rejected. Legacy defaults and the frozen sequence-matched mode
+The standalone `quantitative` schema is no longer supported. Legacy defaults
 are unchanged. An optional `path2metabs` selects another concentration CSV; otherwise
 the original table and its existing sampling/missing-value behavior are used.
 No IU conversion is inferred: nominal mM is an explicit approximation.
@@ -69,9 +68,9 @@ pixi run python -m examples.legacy_basis_water --basis "$MRS_BASIS_H2O" \
 ```
 
 The legacy lipid/MM dependencies remain necessary; this is the full old simulation
-workflow. The notebook's `legacy_basis_h2o_demo` tagged section uses the actual GE
-PRESS TE35 file through the environment and actual MRiLab anatomy. It was executed
-without fitting. Source BASIS/calibration files are not copied or modified.
+workflow. The notebook includes a GE PRESS TE35 example and a custom shuffled bHG
+concentration-table example using external BASIS files and actual MRiLab anatomy.
+Historical execution records below describe the earlier notebook source. Source BASIS/calibration files are not copied or modified.
 
 Validation uses independent complex water sums, the real legacy signal model with
 controlled nonzero MM/lipid providers, exact seeded repeats, independent water noise,
@@ -83,15 +82,21 @@ No scanner-level calibration is claimed. BASIS molar/proton provenance, ambiguou
 table units and the retained legacy attenuation/time conventions remain limitations.
 No fitting, calibration tuning, staging or commits are performed.
 
-## Execution record
+## Historical execution record
+
+These counts and commands describe earlier source, not checks of the cleaned branch.
+The current notebook retains its original embedded results. Run it in a fresh kernel
+with the external inputs available to validate current behavior.
+
 
 ```bash
 MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m pytest -q tests --ignore=tests/integration
 # 299 passed, 33 warnings, 137.24 s
 MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m pytest -q tests/test_legacy_basis_water.py
 # Final targeted verification: 3 passed, 21 warnings, 3.85 s
-MPLCONFIGDIR=/tmp/mrs-phase9-mpl pixi run python -m examples.execute_quantitative_notebook --notebook notebooks/headless_simulation.ipynb --tag legacy_basis_h2o_demo --output outputs/legacy_basis_water_validation/notebook_final
-# MRS_BASIS_H2O supplied externally; new code cell 14 passed.
+# Historical notebook execution used a runner removed with the quantitative pathway.
+# Its saved record remains at outputs/legacy_basis_water_validation/notebook_final.
+# MRS_BASIS_H2O was supplied externally; the then-current tagged cell passed.
 ```
 
 The first test runs exposed fixture-only background-label and integer-concentration
@@ -100,14 +105,3 @@ API. These were corrected using the existing legacy fixture conventions and an
 actual save/read roundtrip. No legacy equations were changed to satisfy tests.
 Exported water samples match exactly; analytical volume/shim expectations are
 checked at rtol=5e-6 for the legacy complex64 arithmetic. No fitter ran.
-
-Proposed staging only:
-
-```bash
-git add --pathspec-from-file=docs/commit_manifests/legacy_water_production.txt
-# feat: integrate BASIS water referencing into legacy batch simulation
-```
-
-The manifest contains production source, tests, example, notebook and documentation;
-no generated data or external BASIS. Existing prior-phase edits in shared files
-should be reviewed before staging. No staging or commit was performed.

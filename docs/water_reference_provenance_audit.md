@@ -1,6 +1,6 @@
 # Phase 1b: Basis, concentration, and calibration provenance audit
 
-**Scope:** provenance and amplitude audit only. No simulation code changed and no water-reference pathway implemented.
+**Historical scope:** provenance and amplitude audit before the optional BASIS-H2O reference. No simulation code changed during that audit. The [legacy reference documentation](legacy_basis_water_reference.md) describes the later approximate extension; the scientific uncertainties below remain relevant. Later [export checks](nifti_mrs_export_validation.md) report the round-trip results.
 
 ## Findings at a glance
 
@@ -9,7 +9,7 @@
 - `Basis.reformat()` further divides all formatted metabolite FIDs by one shared mean absolute sample magnitude. This preserves relative amplitudes in that input array under that common scalar, but changes its absolute scale; it is not per-metabolite normalization. Any input relative amplitudes survive only insofar as the reader/reformatter preserves the raw basis consistently.
 - `Conc_mean`/`Conc_std` are populated from the MRS Database workbook’s `mM_u`/`mM_std`, then combined-metabolite rows are split by fixed ratios and mM/IU fields are collapsed. The resulting values are nominally millimolar concentration summaries. The source represents reported in-vivo concentrations by tissue group; it does not establish intracellular, tissue-water, or wet-tissue-mass concentration semantics consistently across literature sources.
 - The current decay implementation likely has a π error if `T2` is a physical relaxation time: it computes linewidth `1/(πT2)` in s⁻¹, then applies `exp(-linewidth*t)`. The conventional Lorentzian relation is `linewidth_FWHM = 1/(πT2)` Hz and the corresponding FID is `exp(-π linewidth_FWHM t) = exp(-t/T2)`. The current code therefore applies `exp(-t/(πT2))`, a much slower decay. It may have been intended as additional broadening, but the implementation uses the column named T2 and has no separate interpretation documented.
-- No absolute or defensible relative metabolite-to-water calibration follows from current files alone. The basis response has no known concentration/proton calibration and the water arm has empirical scaling. A new calibrated mode needs an explicit convention and reference response; preserve current simulation behavior.
+- No absolute or defensible relative metabolite-to-water calibration follows from current files alone. The basis response has no known concentration/proton calibration and the water arm has empirical scaling. An approximate BASIS-H2O reference requires explicit common-scale assumptions; preserve legacy simulation behavior.
 
 ## 1. Basis provenance and amplitude
 
@@ -52,7 +52,7 @@ Dimensionally, `gamma` is s⁻¹ (equivalently numerically Hz as cycles/s, but n
 e^{-\pi\Delta f t},\qquad T_2=\frac{1}{\pi\Delta f}.
 \]
 
-Thus if `gamma` is the FWHM linewidth, the code should mathematically apply `exp(-π gamma t)` to represent T2, yielding `exp(-t/T2)`. As written it applies `exp(-t/(πT2))`, which is neither the conventional T2 decay nor conventional linewidth application. This is verified algebraically from the code; whether it was an intentional broadening surrogate is unresolved. The pre-existing audit called the equation consistent with Lorentzian linewidth, but that interpretation omitted the required π in the exponent and should be corrected in the audit record. Do not silently change runtime behavior; first decide whether to preserve legacy output or fix behind a calibration mode.
+Thus if `gamma` is the FWHM linewidth, the code should mathematically apply `exp(-π gamma t)` to represent T2, yielding `exp(-t/T2)`. As written it applies `exp(-t/(πT2))`, which is neither the conventional T2 decay nor conventional linewidth application. This is verified algebraically from the code; whether it was an intentional broadening surrogate is unresolved. The pre-existing audit called the equation consistent with Lorentzian linewidth, but that interpretation omitted the required π in the exponent and should be corrected in the audit record. Do not silently change runtime behavior; the retained workflow preserves legacy output.
 
 The basis already has a TE-specific sequence simulation, while this runtime multiplier adds an FID decay across acquisition time. It does not apply a TE echo attenuation factor `exp(-TE/T2)`. These are distinct effects: echo-time relaxation and acquisition-time FID decay. Avoid applying both to the same effect without clarifying whether the basis generation already includes T2 relaxation.
 
@@ -68,17 +68,6 @@ S_w(t)=K\,C_w\,n_w\,b_w(t)\,R_w(TR,TE,T_2),
 
 where `K` is a common acquisition/receive calibration, `C_w` is molar water content per stated tissue-volume convention, and `n_w=2` only if water basis response is defined per molecule rather than already per proton. The simulator has no documented `K`, no calibrated `b_m` per molar amount, no guaranteed interpretation of `n_m`, and no paired water response. Therefore the ratio cannot be derived from existing data. It is not enough to use `Conc_mean` in mM and water concentration in M because the basis normalization and relative response are unknown.
 
-Recommended explicit calibration convention for a separate mode:
-
-- Define metabolite concentrations in mol/L of a clearly specified volume (recommend total tissue volume for direct volume-fraction mixing; record literature provenance and limitations).
-- Define each basis as the complex response to a stated reference amount (e.g. 1 mol/L of metabolite molecules) under its sequence, with spin-system proton response already included exactly once.
-- Define water as response to 1 mol/L of water molecules, with the two-proton response either in the simulated water basis or explicit, but never both.
-- Apply a documented sequence-specific relaxation model once, and state whether the basis already includes sequence evolution or any relaxation.
-- Keep an explicit shared arbitrary unitless signal convention only if the paired arms are calibrated to the same reference; do not add a fitted empirical multiplier.
-- Preserve the current legacy mode and select the calibrated mode separately until its end-to-end numerical validation passes.
-
-A more conservative initial validation can define a relative reference empirically from a known simulated spin-system / reference concentration pair, but that is calibration data and must be identified and justified, not an arbitrary amplitude factor.
-
 ## 5. NIfTI-MRS export paths and minimal round-trip test design
 
 Two paths exist:
@@ -89,19 +78,6 @@ Two paths exist:
 Both `fid2spec`/`spec2fid` use unnormalized FFT/IFFT, so the inverse pair reconstructs samples (subject to dtype precision). The export paths have different explicit phase treatment; equivalence must not be assumed.
 
 Minimal test: construct a deterministic complex FID with nonzero real and imaginary parts at multiple time points, compute its spectrum using the project’s `fid2spec`, export through each path to a temporary NIfTI-MRS file, reload each using its matching loader, and compare both complex FID samples and the reconstructed spectrum against the source. Assert expected phase/conjugation explicitly, peak magnitude, and relative complex error; use `complex64` tolerance and avoid a peak-only check that can miss phase inversion. Run separately for a 1-D result and the supported image-shaped input. This is a proposed test only; it was not executed.
-
-## 6. Least disruptive strategy
-
-Use a separate quantitative calibration mode and retain the existing simulation path unchanged. The mode needs a new calibrated basis response convention and a corresponding water reference model; changing runtime basis handling globally would silently alter existing outputs and may break saved simulations. For the new mode, either preserve raw basis amplitudes and attach an explicit calibration record, or generate/derive calibrated per-concentration basis responses. The current global `Basis.reformat()` normalization cannot be used as an absolute response without recording and undoing its exact factor. No current data supports a universal undo factor or proton multiplier.
-
-Before implementation, decide:
-
-1. Meaning/unit of each concentration field after IU/mM merging and combined-metabolite splitting.
-2. Whether basis spin systems encode proton multiplicity and what concentration amount their amplitude represents.
-3. Whether basis sequence simulations include any relaxation beyond sequence evolution.
-4. Tissue-volume versus tissue-water concentration target.
-5. T2 formula and legacy-compatibility policy.
-6. Which export path and phase convention is canonical.
 
 ## References inspected
 

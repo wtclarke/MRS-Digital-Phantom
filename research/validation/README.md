@@ -1,18 +1,7 @@
-# Validation workflows (optional)
+# Optional notebook validation
 
-Existing `examples/fsl_mrs_*.py`, `examples/lcmodel_*.py` and scientific
-`examples/mrscloud_*.py` are retained in place to preserve cross-imports and historical
-output references. Their optional tests remain in `tests/` and `tests/integration/`;
-the explicit research commit manifest identifies them individually.
+- [BASIS/MAT provenance comparison](basis_h2o/README.md): compare supplied responses after a declared frequency-frame change, without amplitude adjustment.
+- [Legacy-water LCModel conformance](../../docs/lcmodel_legacy_water_conformance.md): fit and summarize saved notebook acquisitions with `lcmodel_legacy_water/run.py` and `summarize.py`.
+- [TE97 concentration-order diagnosis](../../docs/te97_concentration_order_diagnosis.md): replay and validate the metabolite-name mapping fix with `te97_concentration_order/diagnose.py` and `validate_fix.py`.
 
-Scientific reports remain in `docs/` for discoverability: frozen normalization,
-synthetic water calibration, sequence response and processing, NAA decomposition,
-sampling/linewidth, tissue/relaxation/spatial validation, and fitting/noise benchmarks.
-Production users should start with `docs/quantitative_simulator_user_guide.md`.
-
-Fast numerical tests and saved-output analyses do not necessarily launch a fitter.
-Integration tests may launch FSL-MRS, licensed LCModel or Octave, and need external
-research outputs; they are excluded from production verification. Keep those
-prerequisites explicit. Do not substitute regenerated noise or missing captures.
-Generated HTML/PDF/PS/RAW/NIfTI/capture/Monte Carlo artifacts stay under ignored
-`outputs/`, never in the optional research commit.
+These workflows require the identified external inputs or saved notebook outputs. LCModel runs require a licensed executable supplied through `--binary`. Historical reports describe the runs that produced them; they do not certify current source execution. Production simulation does not import this research code.
