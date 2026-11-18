@@ -1,0 +1,21 @@
+{
+  "data/skeletons/MRiLab/T1_map.nii.gz": "df045cd7991e62b7f49642caa0e3c361e585121a101b8083851ccd8727f8df4e",
+  "data/skeletons/MRiLab/T2s_map.nii.gz": "333690a3c00ec0a6c3c918187759aa285b6eda9198df60eb6ce1348b069243b6",
+  "data/skeletons/MRiLab/Rho_map.nii.gz": "0a80edb98bb3004927c2c111dcc07afde77ab2e5bfa083a2a925ed84ef5a8d29",
+  "data/skeletons/MRiLab/T2_map.nii.gz": "cb11663c992169cda4834b7fc1525fc6ecd7b2f7ee9b1c8a207e3b0f599e3cad",
+  "data/skeletons/MRiLab/labels.nii.gz": "0807e51b2f4aca87e36913257c03018d0c92bb7a81721972ae76162846cde482",
+  "simulation/lipids/lipids_cache/0fadb569ecbbb2c84aa6c9b5986175ed.mat": "aa3459820ace0bd955431a32cba75829823e113c82e4118ccead01504eedc201",
+  "simulation/lipids/lipids_cache/68285a1738af6ab15cec694464e0b0ab.mat": "7edc13b06840fb7aa0ef58d134862f859ae83ff3fa78d4877a25aef138b97e09",
+  "simulation/lipids/lipids_cache/038f7c60734c341f3d140d19f90412ae.mat": "8ded4bd93da158d1dbdd4edbd90955db2f2cdcd6d346be037deb7d768236feb3",
+  "simulation/lipids/lipids_cache/756e13a28f53679cab12c1d007f76aa5.mat": "fb4e616b83a48957572bfb99c0d6f2980c4ed9f67267b240b758f86e1f3bb28c",
+  "simulation/lipids/lipids_cache/18cdc11b4f53cf345afad2765d19979e.mat": "228aeb33ffb6c791b55a4b6828221e1e9e382964a6970ad38336716d0f635a27",
+  "simulation/lipids/lipids_cache/e2224823e5fedf2097e04af2272dd5a7.mat": "d3ee084deef2f85df31aa803ce6a89fba74ef938bfe95fe509885449130e2e20",
+  "simulation/lipids/lipids_cache/0e8ca822ce0f5e9ca02308d7f026041a.mat": "6a978c0dc3f73e233d4bab13804d88bc98b2b104099bf56282222c62c34f7e0a",
+  "simulation/lipids/lipids_cache/a0ad7c095de6f21da18d1d97574727a3.mat": "f9078c2f2caa40aa5e001037660e336a0aba7909fa85d405a003ec6408903663",
+  "simulation/lipids/lipids_cache/fea7a38d74ca03a6d5d48aa5825341ed.mat": "db4f12226521463a2cba3a040df91fb6c4f3d4828c50b97da172414e015a7e44",
+  "simulation/lipids/lipids_cache/3a98f2764279d0aa24f0ef564e1de634.mat": "b471f1d504088050a80ece532ef0aea39b35d441e1c99633d4c36c6c1629a647",
+  "simulation/lipids/lipids_cache/e7dd1e2cbd857eed51ef5e07e8b53718.mat": "8d17fa3ef712d6b8efc85d24911d4d1daa7837c6bd2b84393e6e29c8ca0a5745",
+  "simulation/lipids/lipids_cache/7ab4eec1c3d73b7c902cad3c674ee819.mat": "221bf169526ea1bc01e9d728a76b9c8d6531499814186038bc5f5415ce1c258b",
+  "simulation/lipids/lipids_cache/a0c1060c7bc2c44805aeb56b089bbd6c.mat": "35f7bd071db5b5da42be82eec0d05ff39308ee0c6bab07244633958f38f2879d",
+  "data/macromolecules/mm_params.json": "a09199d0189214851540fd42655f913434f3ebef95b948f1ed06d7fa9b5d3e14"
+}

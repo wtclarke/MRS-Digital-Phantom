@@ -1,0 +1,31 @@
+{
+  "driver_sha256": {
+    "fsl_adapter.py": "5c08cae87445eb9f9d8e98874c8b8756fc8df8790268fca466a1fdec1d23012d",
+    "lcmodel_adapter.py": "1d54c277879b80fd0643341d61910cb515ee3e6ce26066d298a8dae942057af8",
+    "run.py": "8664859ac000713da2b88686ba7fa1555176552a87bc6dc54de53a5a53918279",
+    "simulator": {
+      "simulation/headless.py": "3f3fde12826ad4acd6626e5dd73a77cb68b128ba6670e03746d754b5cc53a181",
+      "simulation/signalModel.py": "3c32dc0da4a00a795c2fd1291a4dae702eaa8031959a7f1dc40c274d5c1a8fe9",
+      "simulation/legacy_water_reference.py": "c2236c2b9a05993d1286516301ba2f6e9efa6ded1678edeedb52b8f071c0730c",
+      "simulation/basis.py": "52b993be8fb69c70e3393562a17afaaabbbfc711c9e557471b62d1748f78e26e",
+      "data/metabolites/metab_df.csv": "5afeff00831faf74a681258b876c24471b14ed1c2add8358cb3fecf1c29081d8"
+    },
+    "cases": "156f30340956ea3325741b003a15a65133be30428c1e6818d8cdc763b4b148f4"
+  },
+  "commit": "8accf8bfc785a1d2eb883149ffbccede5e385e08",
+  "basis_hashes": {
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/SH_PRESS_TE144.BASIS": "9c1f905e88f9608f4fb1f8c3d71b86158ee38bb4420d5d2c3b393e7f89f723d2",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/PH_PRESS_144.BASIS": "27478ad773b9e2209979f5aeab1a8a0b8e4a82dfabc8b73cd3354073ba4d07c2",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/UI_PRESS_TE144.BASIS": "419514d4e373d6bc428091e17902270737d7c45106518563ff8680b043733921",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/SH_PRESS_TE97.BASIS": "87b6b1400b2d6819af75a669523621b47a35b6fa96ee53a03915eb10d0a7ff91",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/PH_PRESS_TE35.BASIS": "d59f66a02797af319f50a96590f623672558e4dc07fbabe50e3fbbc6ca7c506b",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/GE_PRESS_TE97.BASIS": "8d874c0ef4f58c24d84ecd2dff551cae97a5cae4f35cb9c6b4840295768b2276",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/UI_PRESS_TE97.BASIS": "677fd4a9f79c8656a6c876cd895909bea6c27e6f56479ee169aebacff6b4a203",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/PH_PRESS_97.BASIS": "c4f083d1a0d819628e2a8c4d4cfb28313634b1d8a06221ba175099c34b2940fe",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/SH_PRESS_TE35.BASIS": "60fa98c6a862e0fc39208a4c89c205436602c49fc63792c4962a9c84cfe0da39",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/GE_PRESS_TE35.BASIS": "f0a42cf0bef1b5427d4f3f3f4e5dd35dd4406581230a7ead1055bd7fbd700a79",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/GE_PRESS_TE144.BASIS": "39ab9bb9c9c3f8778989d1818b729d2dafe023762d7fa3c24ccb439fbc93eff4",
+    "/Users/wclarke/Documents/VoxelSystems/voxel_systems_example_basis/LCM_basis_2/UI_PRESS_TE35.BASIS": "d465c9460a62492ff3dc60bc9c6e0ab2bc00e135952aa803b072edc1fb889261"
+  },
+  "cases": 1312
+}

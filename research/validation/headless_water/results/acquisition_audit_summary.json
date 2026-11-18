@@ -1,0 +1,11 @@
+{
+  "cases": 1312,
+  "concentration_truth_max_abs_error_mM": 0.0,
+  "water_truth_max_abs_error_mol_l": 0.0,
+  "fixed_normalization_per_basis": true,
+  "controlled_water_checks": 1278,
+  "max_water_relative_complex_error": 1.1904354318873329e-07,
+  "noise_groups": 42,
+  "noise_groups_with_identical_clean_signals": 42,
+  "noise_groups_with_distinct_draws": 42
+}

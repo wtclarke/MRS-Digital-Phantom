@@ -1,0 +1,17 @@
+{
+  "python": "3.14.8 | packaged by conda-forge | (main, Oct  7 2026, 00:15:59) [Clang 20.1.8 ]",
+  "executable": "/Users/wclarke/Documents/Python/MRS-Digital-Phantom/.pixi/envs/default/bin/python",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "fsl_mrs": "2.5.1.dev78+ga311e38f2",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "torch": "2.14.1",
+    "torchio": "0.20.23",
+    "nibabel": "5.4.2",
+    "nifti_mrs": "1.4.1",
+    "matplotlib": "3.10.9",
+    "pandas": "3.1.0",
+    "pytest": "9.2.0"
+  }
+}
